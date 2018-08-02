@@ -37,11 +37,17 @@ Run `ng test` to execute the unit tests via
 Run `ng e2e` to execute the end-to-end tests via
 [Protractor](http://www.protractortest.org/).
 
+## Running the application in a Docker container.
+
+From the root directory
+run the node build `ng build` to create the 'dist' directory.
+run `./docker/runDocker.sh`
+Browse to `http://localhost/`
+
+The port can be changed in the `runDocker.sh` file
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the
-[Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 ## Contributing
 
