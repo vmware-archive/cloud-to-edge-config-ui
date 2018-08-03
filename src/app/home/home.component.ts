@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigdataService } from '../services/configdata.service';
+
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public configData : object;
+
+  constructor(private configDataService: ConfigdataService) { }
 
   ngOnInit() {
+    this.configData = this.configDataService.data;
   }
 
 }

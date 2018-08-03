@@ -4,7 +4,19 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes } from '@angular/router';
+
 import { HomeComponent } from './home/home.component';
+import { ConfigdataService } from './services/configdata.service';
+
+
+const routes: Routes = [
+  {
+    path: 'home',
+    component: HomeComponent
+  }
+];
+
 
 @NgModule({
   declarations: [
@@ -14,9 +26,12 @@ import { HomeComponent } from './home/home.component';
   imports: [
     BrowserModule,
     ClarityModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [ConfigdataService],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule { }
