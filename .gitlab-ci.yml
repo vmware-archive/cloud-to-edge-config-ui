@@ -1,0 +1,9 @@
+---
+image: node:10
+
+before_script:
+  - npm install -g @angular/cli=6.1.0
+
+build:
+  script:
+    - ng build
