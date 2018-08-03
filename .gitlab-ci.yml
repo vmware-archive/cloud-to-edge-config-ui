@@ -3,7 +3,7 @@ image: node:10
 
 before_script:
   - npm install -g @angular/cli@6.1.0
-  - npm install
+  - npm ci
 
 build:
   script:
