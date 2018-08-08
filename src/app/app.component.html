@@ -19,18 +19,20 @@
     <ul class="nav">
       <li class="nav-item"><a class="nav-link" routerLink="loadconfig">Load Config</a></li>
       <li class="nav-item"><a class="nav-link" routerLink="exportConfig">Export</a></li>
-      <li class="nav-item"><a class="nav-link" routerLink="addvcenter">Add vCenter</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="environmentlist">Environments</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="environmentcreate">Create Environment</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="clusterlist">Clusters</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="clustercreate">Create Cluster</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="edgelist">Edges</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="edgecreate">Edge Create</a></li>
+
     </ul>
   </nav>
 
 
   <div class="content-container">
     <div class="content-area">
-      <div style="text-align:center">
-        <h1>
-          Welcome to {{ title }}!
-        </h1>
-      </div>
+      <router-outlet></router-outlet>
     </div>
 
 
@@ -41,7 +43,12 @@
           <input id="configMenuSection" type="checkbox">
           <label for="configMenuSection">Config</label>
           <ul class="nav-list">
-            <li><a class="nav-link" routerLink="vcenters">vCenters</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="environmentlist">Environments</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="environmentcreate">Create Environment</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="clusterlist">Clusters</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="clustercreate">Create Cluster</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="edgelist">Edges</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="edgecreate">Edge Create</a></li>
           </ul>
         </section>
 
