@@ -8,6 +8,7 @@ import {ClusterListComponent} from "../cluster-list/cluster-list.component";
 import {ClusterCreateComponent} from "../cluster-create/cluster-create.component";
 import {EdgeListComponent} from "../edge-list/edge-list.component";
 import {EdgeCreateComponent} from "../edge-create/edge-create.component";
+import {LoadConfigComponent} from "../load-config/load-config.component";
 
 const routes: Routes = [
   { path:  '', redirectTo:  'home', pathMatch:  'full' },
@@ -24,7 +25,7 @@ const routes: Routes = [
     path:  'clustercreate',
     component:  ClusterCreateComponent
   },  {
-    path:  'clusterlist',
+    path:  'clusterlist/:envId',
     component:  ClusterListComponent
   },  {
     path:  'edgecreate',
@@ -32,8 +33,11 @@ const routes: Routes = [
   },  {
     path:  'edgelist',
     component:  EdgeListComponent
-  },
-];
+  },  {
+    path:  'loadconfig',
+    component:  LoadConfigComponent
+  }
+]
 
 @NgModule({
   imports: [

@@ -1,3 +1,37 @@
-<p>
-  cluster-list works!
-</p>
+
+
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+    <div class="card"  *ngFor="let cluster of clusters">
+      <div class="card-header">
+        <a class="nav-link" [routerLink]="['/edgelist/', cluster.id]">{{ cluster.name }} ( {{cluster.id }})</a>
+
+
+      </div>
+      <div class="card-block">
+
+        <div class="card-text">
+
+
+          <!--<form>-->
+            <!--<section class="form-block">-->
+
+              <!--<div class="form-group">-->
+                <!--<label for="aForm_1">Edges</label>-->
+                <!--<input disabled="true" type="text" id="aForm_1"  value="{{ getEdgeCount(cluster.id)}}">-->
+              <!--</div>-->
+
+
+            <!--</section>-->
+          <!--</form>-->
+
+
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

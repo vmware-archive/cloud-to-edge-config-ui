@@ -1,0 +1,21 @@
+[
+  {
+    "name": "vCenterOne",
+    "clusters": [
+      {
+        "name": "ManagementCluster",
+        "edges": [
+          {
+            "name": "EdgeOne"
+          },
+          {
+            "name": "EdgeTwo"
+          }
+        ]
+      },
+      {
+        "name": "WorkloadCluster"
+      }
+    ]
+  }
+]
