@@ -15,10 +15,16 @@ export class ConfigdataService {
   static configData: object = {
     "environments": [
       {
-        "name": "vCenterOne",
+        "name": "Deployment South",
         "id": "98327320982",
+        "deployUniform": true,
+        "deployCustom": false,
+        "typeGG": true,
+        "typeAzure": false,
+        "ftStandard": true,
+        "ftNoDown": true,
         "location": "Austin",
-        "contact": "Steven F",
+        "contact": "Steven Eff",
         "clusters": [
           {
             "name": "ManagementCluster",
@@ -41,8 +47,14 @@ export class ConfigdataService {
         ]
       },
       {
-        "name": "vCenterTwo",
+        "name": "Deployment West",
         "id": "213243242",
+        "deployUniform": false,
+        "deployCustom": true,
+        "typeGG": true,
+        "typeAzure": true,
+        "ftStandard": true,
+        "ftNoDown": true,
         "location": "Area 51",
         "contact": "Grey Eye",
         "clusters": [
@@ -61,6 +73,9 @@ export class ConfigdataService {
     ]
   };
 
+  static setConfig(config) {
+    ConfigdataService.configData = config;
+  }
 
   static getConfig(): object {
     return ConfigdataService.configData;
@@ -114,9 +129,21 @@ export class ConfigdataService {
       let edgeCount = cluster.edges.length;
 
       return edgeCount
-    } catch  {
+    } catch {
       return 0;
     }
   }
+
+  static getCluster2(envId, clusterId): number {
+    try {
+      let cluster: Cluster = ConfigdataService.getCluster(envId, clusterId);
+      let edgeCount = cluster.edges.length;
+
+      return edgeCount
+    } catch {
+      return 0;
+    }
+  }
+
 
 }

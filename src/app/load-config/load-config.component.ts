@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FileUploader} from 'ng2-file-upload/ng2-file-upload';
+import { Router } from '@angular/router';
+import {ConfigdataService} from "../services/configdata.service";
 
 const URL = 'http://localhost:3000/api/upload';
 
@@ -9,21 +10,52 @@ const URL = 'http://localhost:3000/api/upload';
   styleUrls: ['./load-config.component.css']
 })
 export class LoadConfigComponent implements OnInit {
+  configData = "";
+  formatType = "javascript";
 
-  public uploader: FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
 
-  constructor() {
+  constructor(private router: Router  ) {
   }
 
   ngOnInit() {
-    this.uploader.onAfterAddingFile = (file) => {
-      file.withCredentials = false;
-    };
+    this.configData = JSON.stringify(ConfigdataService.getConfig());
 
-    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-      console.log('ImageUpload:uploaded:', item, status, response);
-      alert('File uploaded successfully');
-    };
+
+  }
+
+  saveJavascript(){
+    ConfigdataService.setConfig(JSON.parse(this.configData));
+  }
+
+  saveYaml(){
+alert("YAML is not yet supported");
+  }
+
+  saveCsv(){
+    alert("CSV is not yet supported");
+  }
+
+
+  onSubmit(){
+    switch (this.formatType){
+      case "javascript":
+        this.saveJavascript();
+        break;
+      case "yaml":
+        this.saveYaml();
+        break;
+      case "csv":
+        this.saveCsv();
+        break;
+
+    }
+
+    this.router.navigateByUrl("environmentlist");
+  }
+
+  buttonCancel(){
+    this.router.navigateByUrl("home");
+
   }
 
 }

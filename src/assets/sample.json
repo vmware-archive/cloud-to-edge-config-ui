@@ -1,21 +1,36 @@
-[
-  {
-    "name": "vCenterOne",
-    "clusters": [
-      {
-        "name": "ManagementCluster",
-        "edges": [
-          {
-            "name": "EdgeOne"
-          },
-          {
-            "name": "EdgeTwo"
-          }
-        ]
-      },
-      {
-        "name": "WorkloadCluster"
-      }
-    ]
-  }
-]
+{
+  "environments": [
+    {
+      "name": "Deployment South",
+      "id": "98327320982",
+      "deployUniform": true,
+      "deployCustom": false,
+      "typeGG": true,
+      "typeAzure": false,
+      "ftStandard": true,
+      "ftNoDown": true,
+      "location": "Austin",
+      "contact": "Steven Eff",
+      "clusters": [
+        {
+          "name": "ManagementCluster",
+          "id": "443335",
+          "edges": [
+            {
+              "name": "EdgeOne"
+            },
+            {
+              "name": "EdgeTwo"
+            }
+          ]
+        },
+        {
+          "name": "WorkloadCluster",
+          "id": "112233",
+          "edges": []
+        }
+      ]
+    }
+
+  ]
+}

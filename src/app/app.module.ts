@@ -9,11 +9,8 @@ import {FormsModule} from '@angular/forms';
 
 import {HomeComponent} from './home/home.component';
 import {ConfigdataService} from './services/configdata.service';
-import {EnvironmentCreateComponent} from './environment-create/environment-create.component';
 import {EnvironmentListComponent} from './environment-list/environment-list.component';
 import {ClusterListComponent} from './cluster-list/cluster-list.component';
-import {ClusterCreateComponent} from './cluster-create/cluster-create.component';
-import {EdgeCreateComponent} from './edge-create/edge-create.component';
 import {EdgeListComponent} from './edge-list/edge-list.component';
 import {AppRoutingModule} from "./app-routing/app-routing.module";
 import {LoadConfigComponent} from './load-config/load-config.component';
@@ -24,11 +21,8 @@ import {LoadConfigComponent} from './load-config/load-config.component';
     AppComponent,
     FileSelectDirective,
     HomeComponent,
-    EnvironmentCreateComponent,
     EnvironmentListComponent,
     ClusterListComponent,
-    ClusterCreateComponent,
-    EdgeCreateComponent,
     EdgeListComponent,
     LoadConfigComponent
   ],
