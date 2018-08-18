@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import {ConfigdataService} from "../services/configdata.service";
 
-const URL = 'http://localhost:3000/api/upload';
 
 @Component({
   selector: 'app-load-config',
@@ -58,4 +57,7 @@ alert("YAML is not yet supported");
 
   }
 
+  buttonExport() {
+    alert("TODO");
+  }
 }

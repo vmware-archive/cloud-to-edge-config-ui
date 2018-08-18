@@ -6,24 +6,28 @@ import {EnvironmentListComponent} from "../environment-list/environment-list.com
 import {ClusterListComponent} from "../cluster-list/cluster-list.component";
 import {EdgeListComponent} from "../edge-list/edge-list.component";
 import {LoadConfigComponent} from "../load-config/load-config.component";
+import {EnvironmentComponent} from "../environment/environment.component";
 
 const routes: Routes = [
-  { path:  '', redirectTo:  'home', pathMatch:  'full' },
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
   {
-    path:  'home',
-    component:  HomeComponent
-  },  {
-    path:  'environmentlist',
-    component:  EnvironmentListComponent
-  },  {
-    path:  'clusterlist/:envId',
-    component:  ClusterListComponent
-  },  {
-    path:  'edgelist/:clusterId',
-    component:  EdgeListComponent
-  },  {
-    path:  'loadconfig',
-    component:  LoadConfigComponent
+    path: 'home',
+    component: HomeComponent
+  }, {
+    path: 'environment/:envId',
+    component: EnvironmentComponent
+  }, {
+    path: 'environmentlist',
+    component: EnvironmentListComponent
+  }, {
+    path: 'clusterlist/:envId',
+    component: ClusterListComponent
+  }, {
+    path: 'edgelist/:clusterId',
+    component: EdgeListComponent
+  }, {
+    path: 'loadconfig',
+    component: LoadConfigComponent
   }
 ]
 

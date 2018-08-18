@@ -14,6 +14,7 @@ import {ClusterListComponent} from './cluster-list/cluster-list.component';
 import {EdgeListComponent} from './edge-list/edge-list.component';
 import {AppRoutingModule} from "./app-routing/app-routing.module";
 import {LoadConfigComponent} from './load-config/load-config.component';
+import { EnvironmentComponent } from './environment/environment.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {LoadConfigComponent} from './load-config/load-config.component';
     EnvironmentListComponent,
     ClusterListComponent,
     EdgeListComponent,
-    LoadConfigComponent
+    LoadConfigComponent,
+    EnvironmentComponent
   ],
   imports: [
     BrowserModule,

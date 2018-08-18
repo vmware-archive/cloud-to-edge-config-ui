@@ -1,0 +1,90 @@
+<div>
+  <div class="row">
+    <div class="col-lg-5 col-md-6 col-sm-8 col-xs-12">
+      <h3>ID: {{environment.id}}</h3>
+
+      <form (ngSubmit)="onSubmit()" #configForm="ngForm">
+
+        <section class="form-block">
+
+
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Environment Name" disabled [(ngModel)]="environment.name"
+                   name="envName" #envName="ngModel">
+          </div>
+
+
+          <div class="form-group">
+            <label>Deployment Type</label>
+
+            <div class="radio-inline">
+              <input type="radio" id="deployment_uniform"
+                     [(ngModel)]="environment.deployUniform"
+                     [checked]="environment.deployUniform"
+                     [value]="true"
+                     name="deploymentType"
+                     #envDeployUniform="ngModel"
+                     disabled>
+              <label for="deployment_uniform">Uniform</label>
+            </div>
+            <div class="radio-inline">
+              <input type="radio" id="deployment_custom"
+                     [(ngModel)]="environment.deployCustom"
+                     [checked]="environment.deployCustom"
+                     [value]="true"
+                     name="deploymentType"
+                     disabled>
+              <label for="deployment_custom">Custom</label>
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+            <label>Deployment Type</label>
+
+            <div class="btn-group">
+              <div class="radio btn">
+                <input type="radio" name="btn-group-demo-radios" id="btn-demo-radio-1"
+                       [value]="true"
+                       [checked]="environment.deployUniform">
+                <label for="btn-demo-radio-1">Uniform</label>
+              </div>
+              <div class="radio btn">
+                <input type="radio" name="btn-group-demo-radios" id="btn-demo-radio-2"
+                       [value]="true"
+                       [checked]="environment.deployCustom">
+                <label for="btn-demo-radio-2">Custom</label>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Location</label>
+            <input type="text" id="location" placeholder="Location" disabled [(ngModel)]="environment.location"
+                   name="envLocation" #envLocation="ngModel">
+          </div>
+          en
+          <div class="form-group">
+            <label for="name">Contact</label>
+            <input type="text" id="contact" placeholder="Contact" disabled [(ngModel)]="environment.contact"
+                   name="envContact" #envContact="ngModel">
+          </div>
+
+          <div class="form-group">
+            <label for="git_key">Git SSH Key</label>
+            <textarea id="git_key" rows="5" [(ngModel)]="environment.git_key" name="gitKey"
+                      #gitKey="ngModel"></textarea>
+          </div>
+
+        </section>
+        <button class="btn btn-primary" type=submit>Save</button>
+
+        <button type="button" class="btn btn-secondary" (click)="buttonCancel()">Cancel</button>
+      </form>
+
+    </div>
+  </div>
+</div>

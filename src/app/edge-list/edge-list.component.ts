@@ -11,7 +11,6 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./edge-list.component.css']
 })
 export class EdgeListComponent implements OnInit {
-  public cluster: Cluster;
 
   public edges: Edge[];
   private routerSub: any;
@@ -20,9 +19,6 @@ export class EdgeListComponent implements OnInit {
   ngOnInit() {
     this.routerSub = this.route.params.subscribe(params => {
       let id:number = +params['clusterId']; // (+) converts string 'id' to a number
-      this.cluster = ConfigdataService.getCluster(2,id);
-      this.edges = this.cluster.edges;
-      console.log("clusters:" + JSON.stringify(this.edges));
     });
   }
 

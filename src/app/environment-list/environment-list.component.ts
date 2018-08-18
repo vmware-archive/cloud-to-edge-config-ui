@@ -17,8 +17,5 @@ export class EnvironmentListComponent implements OnInit {
 
   }
 
-   getClusterCount(envId) : number{
-    return ConfigdataService.getClusterCount(envId);
-  }
 
 }

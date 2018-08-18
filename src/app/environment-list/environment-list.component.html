@@ -1,19 +1,17 @@
-
-
 <div [hidden]="environments">No Data
   <a class="nav-link" [routerLink]="['/loadconfig/']">loaded</a>
-  or configured</div>
-
+  or configured
+</div>
 
 
 <div class="row">
 
 
-  <div class="col-lg-5 col-md-6 col-sm-8 col-xs-12"   *ngFor="let env of environments">
+  <div class="col-lg-5 col-md-6 col-sm-8 col-xs-12" *ngFor="let env of environments">
 
     <div class="card">
       <div class="card-header">
-        <a class="nav-link" [routerLink]="['/clusterlist/', env.id]">{{ env.name }} ( {{env.id }})</a>
+        <a class="nav-link" [routerLink]="['/environment/', env.id]">{{ env.name }} ( {{env.id }})</a>
 
 
       </div>
@@ -26,25 +24,17 @@
             <section class="form-block">
               <div class="form-group">
                 <label for="aForm_1">Location</label>
-                <input disabled="true" type="text" id="aForm_1"  value="{{ env.location}}">
+                <input disabled type="text" id="aForm_1" value="{{ env.location}}">
               </div>
-
               <div class="form-group">
+
                 <label for="aForm_2">Contact</label>
-                <input disabled="true" type="text" id="aForm_2"  value="{{ env.contact}}">
-              </div>
-
-              <div class="form-group">
-                <label for="aForm_3">Clusters</label>
-                <input disabled="true" type="text" id="aForm_3"  value="{{ getClusterCount(env.id)}}">
+                <input disabled type="text" id="aForm_2" value="{{ env.contact}}">
               </div>
 
 
             </section>
           </form>
-
-
-
 
 
         </div>

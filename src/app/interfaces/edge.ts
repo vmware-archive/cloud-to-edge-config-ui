@@ -1,5 +1,7 @@
 export interface Edge {
   id: Number;
-  name: String;
+
+  edge_group: String;
+
 
 }

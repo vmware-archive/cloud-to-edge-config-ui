@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Environment} from "../interfaces/environment";
-import {Cluster} from "../interfaces/cluster";
 
 @Injectable({
   providedIn: 'root'
@@ -15,59 +14,33 @@ export class ConfigdataService {
   static configData: object = {
     "environments": [
       {
-        "name": "Deployment South",
-        "id": "98327320982",
-        "deployUniform": true,
-        "deployCustom": false,
-        "typeGG": true,
-        "typeAzure": false,
-        "ftStandard": true,
-        "ftNoDown": true,
-        "location": "Austin",
-        "contact": "Steven Eff",
-        "clusters": [
-          {
-            "name": "ManagementCluster",
-            "id": "443335",
-            "edges": [
-              {
-                "name": "EdgeOne"
-              },
-              {
-                "name": "EdgeTwo"
-              }
-            ]
-          },
-          {
-            "name": "WorkloadCluster",
-            "id": "112233",
-            "edges": []
-
-          }
-        ]
-      },
-      {
-        "name": "Deployment West",
-        "id": "213243242",
-        "deployUniform": false,
-        "deployCustom": true,
-        "typeGG": true,
-        "typeAzure": true,
-        "ftStandard": true,
-        "ftNoDown": true,
-        "location": "Area 51",
-        "contact": "Grey Eye",
-        "clusters": [
-          {
-            "name": "ManagementCluster",
-            "id": "88776",
-            "edges": [
-              {
-                "name": "AnotherEdge"
-              }
-            ]
-          }
-        ]
+        id: "123",
+        name: "Deploy West",
+        deployUniform: true,
+        deployCustom: false,
+        typeGG: true,
+        typeAzure: true,
+        ftStandard: true,
+        ftNoDown: false,
+        location: "Area 51",
+        contact: "Gray Eye",
+        vcenters: [],
+        git_key: "0&^%&$675*&%^&*^$^&*58",
+        ntpservers: "10.13.12.2",
+        dnsserver: "10.13.12.2",
+        dnsdomain: "corp.local.io",
+        defaultgateway: "10.13.12.1 ",
+        netmask: "255.255.255.0",
+        binary_webserver: "http://192.168.120.40",
+        base_ova_name: "xenial-server-cloudimg-amd64.ova",
+        base_ova_name_arm: "xenial-server-cloudimg-arm64.ova",
+        ovftool_image: "VMware-ovftool-4.3.0-7948156-lin.x86_64.bundle",
+        skyway_edge_vm_basename: "edgevm",
+        skyway_edge_vm_user: "edgevm",
+        skyway_edge_vm_password: "skyway-passZ!",
+        skyway_edge_vm_network: "VM-RegionA01-vDS-COMP",
+        skyway_edge_vm_ssh_priv_key: "MIIEpAIBAAKCAQE",
+        skyway_edge_vm_ssh_pub_key: "QrbqK+twcjz3Ity"
       }
 
     ]
@@ -88,62 +61,14 @@ export class ConfigdataService {
 
   }
 
-  static getEnvironment(id): Environment {
-    let environments = ConfigdataService.getEnvironmentList();
 
-    for (let i = 0; i < environments.length; i++) {
-      if (Number(environments[i].id) === id) {
+  static getEnvironment(envId: string) {
+    let environments = this.getEnvironmentList();
+    for(let i = 0; i < environments.length; i++){
+      if(environments[i].id === envId){
         return environments[i];
       }
     }
-    return null;
+
   }
-
-  static getCluster(envId, clusterId): Cluster {
-    let environment: Environment = ConfigdataService.getEnvironment(envId);
-    let clusters: Cluster[] = environment.clusters;
-
-    for (let i = 0; i < clusters.length; i++) {
-      if (Number(clusters[i].id) === clusterId) {
-        return clusters[i];
-      }
-    }
-    return null;
-  }
-
-  static getClusterCount(envId): number {
-    let environments = ConfigdataService.getEnvironmentList();
-
-    for (let i = 0; i < environments.length; i++) {
-      if (environments[i].id === envId) {
-        let clusters: Cluster[] = environments[i].clusters;
-        return clusters.length;
-      }
-    }
-    return 0;
-  }
-
-  static getEdgeCount(envId, clusterId): number {
-    try {
-      let cluster: Cluster = ConfigdataService.getCluster(envId, clusterId);
-      let edgeCount = cluster.edges.length;
-
-      return edgeCount
-    } catch {
-      return 0;
-    }
-  }
-
-  static getCluster2(envId, clusterId): number {
-    try {
-      let cluster: Cluster = ConfigdataService.getCluster(envId, clusterId);
-      let edgeCount = cluster.edges.length;
-
-      return edgeCount
-    } catch {
-      return 0;
-    }
-  }
-
-
 }
