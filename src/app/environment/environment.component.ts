@@ -11,6 +11,7 @@ import {Environment} from "../interfaces/environment";
 export class EnvironmentComponent implements OnInit {
   private routerSub: any;
   environment: Environment;
+  readonly: boolean;
 
   constructor(private route: ActivatedRoute, private configDataService: ConfigdataService) {
   }
@@ -20,14 +21,45 @@ export class EnvironmentComponent implements OnInit {
     this.routerSub = this.route.params.subscribe(params => {
       let envId: string = params['envId']; // (+) converts string 'id' to a number
       this.environment = ConfigdataService.getEnvironment(envId);
+      this.readonly = false;
     });
   }
 
-  onSubmit(){
+  // radio button data binding does not seem to work
+  onRadioClickDeploymentType() {
+    if (!this.readonly) {
+      this.environment.deployCustom = !this.environment.deployCustom;
+      this.environment.deployUniform = !this.environment.deployUniform;
+    }
+  }
+
+  onRadioClickFaultToleranceType() {
+    if (!this.readonly) {
+      this.environment.ftStandard = !this.environment.ftStandard;
+      this.environment.ftNoDown = !this.environment.ftNoDown;
+    }
+  }
+
+  isDisabled(): boolean {
+    //console.log("disabled:" + this.readonly);
+
+    return this.readonly;
+  }
+
+  isFaultToleranceDisabled(): boolean {
+    let isDisabled = this.readonly;
+    if (!this.environment.typeGG && !this.environment.typeAzure) {
+      isDisabled = true;
+    }
+    return isDisabled;
+  }
+
+
+  onSubmit() {
 
   }
 
-  buttonCancel(){
+  buttonCancel() {
 
   }
 

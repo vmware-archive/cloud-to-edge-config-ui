@@ -52,5 +52,32 @@ export interface Environment {
   skyway_edge_vm_ssh_priv_key: string;
   skyway_edge_vm_ssh_pub_key: string;
 
+  // Azure auth settings
+  azure_cli_application_id: string;
+  azure_cli_application_key: string;
+  azure_cli_tenant_id: string;
+
+  // Name of the IoT hub
+  azure_iot_hub_name: string;
+
+  // Group to contain the IoT resources (will be created).
+  azure_iot_group: string;
+
+  // AWS auth settings
+  aws_access_key: string;
+  aws_secret_key: string;
+
+  // AWS Greengrass settings
+  // This S3 bucket is used to store credentials, lambda code, etc.
+  greengrass_s3_bucket: string;
+
+
+  // The role will create devices of the form {greengrass_device_stub}N, where N
+// is between 1 and greengrass_device_count.
+// These can be left undefined if no devices should be mass-created this way.
+  greengrass_device_stub: string;
+  greengrass_device_count: number;
+
+
 }
 
