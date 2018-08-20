@@ -1,3 +1,67 @@
-<p>
-  edge works!
-</p>
+<div>
+  <h3>Edge</h3>
+
+  <div class="row">
+    <div class="col-lg-5 col-md-6 col-sm-8 col-xs-12">
+      <h4 *ngIf="!adding">ID: {{edge.id}}
+
+        <clr-icon shape="pencil" (click)="onEdit()" *ngIf="isDisabled()"></clr-icon>
+      </h4>
+
+      <form (ngSubmit)="onSubmit()" #configForm="ngForm">
+
+        <section class="form-block">
+
+
+
+          <div class="form-group">
+            <label for="name">Edge Group</label>
+            <input type="text" id="name" placeholder="Edge Group Name"
+                   [(ngModel)]="edge.edge_group"
+                   name="edgeName"
+                   #edgeName="ngModel"
+                   disabled="{{readonly}}"
+            />
+
+          </div>
+
+          <div class="form-group" *ngIf="environment.deployCustom">
+            <label>Cloud Targets</label>
+
+            <div class="checkbox-inline">
+              <input type="checkbox" id="cloud_azure"
+                     [value]="true"
+                     [checked]="edge.typeAzure"
+                     [(ngModel)]="edge.typeAzure"
+                     name="cloudType_azure"
+                     [disabled]="isDisabled()"
+              >
+              <label for="cloud_azure">Azure</label>
+            </div>
+
+
+            <div class="checkbox-inline">
+              <input type="checkbox" id="cloud_greengrass"
+                     [value]="true"
+                     [checked]="edge.typeGG"
+                     [(ngModel)]="edge.typeGG"
+                     name="cloudType_greengrass"
+                     [disabled]="isDisabled()"
+              >
+              <label for="cloud_greengrass">GreenGrass</label>
+            </div>
+
+          </div>
+
+        </section>
+
+        <button class="btn btn-primary" type=submit *ngIf="!isDisabled()">Save</button>
+
+        <button type="button" class="btn btn-secondary" (click)="buttonCancel()">Cancel</button>
+
+      </form>
+
+    </div>
+  </div>
+
+</div>

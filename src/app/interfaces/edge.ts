@@ -3,5 +3,7 @@ export interface Edge {
 
   edge_group: string;
 
+  typeGG: boolean;
+  typeAzure: boolean
 
 }

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Environment} from "../interfaces/environment";
 import {ConfigdataService} from "../services/configdata.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {vCenter} from "../interfaces/vcenter";
+import {ConfigFactory} from "../classes/config-factory";
 
 @Component({
   selector: 'app-v-center',
@@ -15,26 +16,27 @@ export class VCenterComponent implements OnInit {
   vcenter: vCenter;
 
   readonly: boolean;
+  adding: boolean;
 
   constructor(private route: ActivatedRoute, private router: Router) {
   }
-
 
   ngOnInit() {
     this.routerSub = this.route.params.subscribe(params => {
       let envId: string = params['envId']; // (+) converts string 'id' to a number
       let vcId: string = params['vcId']; // (+) converts string 'id' to a number
       this.environment = ConfigdataService.getEnvironment(envId);
-      let vcenters = this.environment.vcenters;
-      for(let i=0; i<vcenters.length; i++){
-        if(vcenters[i].id == vcId){
-          this.vcenter = vcenters[i];
-        }
+
+      if (vcId === "new") {
+        this.adding = true;
+        this.readonly = false;
+        this.vcenter = ConfigFactory.createVCenter();
+      } else {
+        this.vcenter = ConfigdataService.getVCenter(envId, vcId);
+        this.readonly = true;
       }
-      this.readonly = true;
     });
   }
-
 
   isDisabled(): boolean {
     //console.log("disabled:" + this.readonly);
@@ -47,7 +49,8 @@ export class VCenterComponent implements OnInit {
   }
 
   onSubmit() {
-
+    ConfigdataService.setVCenter(this.environment.id, this.vcenter);
+    this.router.navigateByUrl("/environment/" + this.environment.id + "/vcenterlist");
   }
 
   buttonCancel() {

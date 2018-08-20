@@ -1,36 +1,113 @@
 {
   "environments": [
     {
-      "name": "Deployment South",
-      "id": "98327320982",
+      "id": "123",
+      "name": "Deploy West",
       "deployUniform": true,
       "deployCustom": false,
       "typeGG": true,
-      "typeAzure": false,
+      "typeAzure": true,
       "ftStandard": true,
-      "ftNoDown": true,
-      "location": "Austin",
-      "contact": "Steven Eff",
-      "clusters": [
+      "ftNoDown": false,
+      "location": "Area 51",
+      "contact": "Gray Eye",
+      "vcenters": [
         {
-          "name": "ManagementCluster",
-          "id": "443335",
-          "edges": [
+          "id": 8797,
+          "name": "vCenter UAT",
+          "host": "vcenter-01.lab.local",
+          "user": "administrator@vsphere.local",
+          "password": "VMware1!",
+          "clusters": [
             {
-              "name": "EdgeOne"
+              "id": 432,
+              "vcenter_cluster": "Management Cluster",
+              "typeGG": true,
+              "typeAzure": false,
+              "vcenter_datacenter": "West DC",
+              "vcenter_datastore": "Tier 1",
+              "vcenter_rp": "Mgmt RP",
+              "vcenter_insecure": true,
+              "edges": [
+                {
+                  "id": "9900",
+                  "edge_group": "Edge One"
+                },
+                {
+                  "id": "777",
+                  "edge_group": "Edge Two"
+                }
+              ]
             },
             {
-              "name": "EdgeTwo"
+              "id": 221,
+              "vcenter_cluster": "Workload Cluster",
+              "typeGG": true,
+              "typeAzure": false,
+              "vcenter_datacenter": "West DC",
+              "vcenter_datastore": "Tier 2",
+              "vcenter_rp": "Workload RP",
+              "vcenter_insecure": true,
+              "edges": [
+                {
+                  "id": "9903620",
+                  "edge_group": "Edge 1"
+                },
+                {
+                  "id": "3322",
+                  "edge_group": "Edge 2"
+                }
+              ]
+            },
+            {
+              "id": "930423399",
+              "vcenter_cluster": "South Cluster",
+              "vcenter_datacenter": "Retail DC",
+              "vcenter_datastore": "NFS Fast",
+              "vcenter_rp": "Inflate",
+              "vcenter_insecure": true,
+              "edges": [
+                {
+                  "id": "-1098697968",
+                  "edge_group": "New South Edge",
+                  "typeGG": true,
+                  "typeAzure": true
+                },
+                {
+                  "id": "-1509867464",
+                  "edge_group": "North Edge",
+                  "typeGG": true,
+                  "typeAzure": true
+                }
+              ]
             }
           ]
         },
         {
-          "name": "WorkloadCluster",
-          "id": "112233",
-          "edges": []
+          "id": 24553,
+          "name": "vCenter Prod",
+          "host": "vcenter-01.corp.com",
+          "user": "administrator@vsphere.local",
+          "password": "VMware1!",
+          "clusters": []
         }
-      ]
+      ],
+      "git_key": "0&^%&$675*&%^&*^$^&*58",
+      "ntpservers": "10.13.12.2",
+      "dnsserver": "10.13.12.2",
+      "dnsdomain": "corp.local.io",
+      "defaultgateway": "10.13.12.1 ",
+      "netmask": "255.255.255.0",
+      "binary_webserver": "http://192.168.120.40",
+      "base_ova_name": "xenial-server-cloudimg-amd64.ova",
+      "base_ova_name_arm": "xenial-server-cloudimg-arm64.ova",
+      "ovftool_image": "VMware-ovftool-4.3.0-7948156-lin.x86_64.bundle",
+      "skyway_edge_vm_basename": "edgevm",
+      "skyway_edge_vm_user": "edgevm",
+      "skyway_edge_vm_password": "skyway-passZ!",
+      "skyway_edge_vm_network": "VM-RegionA01-vDS-COMP",
+      "skyway_edge_vm_ssh_priv_key": "MIIEpAIBAAKCAQE",
+      "skyway_edge_vm_ssh_pub_key": "QrbqK+twcjz3Ity"
     }
-
   ]
 }

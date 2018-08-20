@@ -4,6 +4,7 @@ import {ConfigdataService} from "../services/configdata.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {vCenter} from "../interfaces/vcenter";
 import {Cluster} from "../interfaces/cluster";
+import {ConfigFactory} from "../classes/config-factory";
 
 @Component({
   selector: 'app-cluster',
@@ -17,6 +18,7 @@ export class ClusterComponent implements OnInit {
   cluster: Cluster;
 
   readonly: boolean;
+  adding: boolean;
 
   constructor(private route: ActivatedRoute, private router: Router) {
   }
@@ -29,9 +31,15 @@ export class ClusterComponent implements OnInit {
       let clusterId: string = params['clusterId']; // (+) converts string 'id' to a number
       this.environment = ConfigdataService.getEnvironment(envId);
       this.vcenter = ConfigdataService.getVCenter(envId, vcId);
-      this.cluster = ConfigdataService.getCluster(envId, vcId, clusterId);
 
-      this.readonly = true;
+      if (clusterId === "new") {
+        this.adding = true;
+        this.readonly = false;
+        this.cluster = ConfigFactory.createCluster();
+      } else {
+        this.cluster = ConfigdataService.getCluster(envId, vcId, clusterId);
+        this.readonly = true;
+      }
     });
   }
 
@@ -47,6 +55,8 @@ export class ClusterComponent implements OnInit {
   }
 
   onSubmit() {
+    ConfigdataService.setCluster(this.environment.id, this.vcenter.id, this.cluster);
+    this.router.navigateByUrl("/environment/" + this.environment.id + "/vcenter/" + this.vcenter.id + "/clusterlist");
 
   }
 

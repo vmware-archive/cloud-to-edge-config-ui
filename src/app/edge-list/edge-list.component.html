@@ -1,4 +1,15 @@
-<h3>Edges</h3>
+<h3>
+  <a class="nav-link" [routerLink]="['/environment/', environment.id,
+        'vcenter', vcenter.id, 'clusterlist']">    <clr-icon shape="circle-arrow"></clr-icon>
+  </a>
+  Edges
+  <a class="nav-link" [routerLink]="['/environment/', environment.id,
+        'vcenter', vcenter.id,
+        'cluster', cluster.id,
+        'edge', 'new']">
+    <clr-icon shape="plus"></clr-icon>
+  </a>
+</h3>
 
 
 <div class="row">

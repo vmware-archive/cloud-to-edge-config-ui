@@ -19,6 +19,7 @@ export class EdgeListComponent implements OnInit {
   edges: Edge[];
 
   readonly: boolean;
+  adding: boolean;
 
   constructor(private route: ActivatedRoute, private router: Router) {
   }
@@ -35,6 +36,8 @@ export class EdgeListComponent implements OnInit {
       this.edges = this.cluster.edges;
 
       this.readonly = true;
+      this.adding = true;
+
     });
   }
 
@@ -48,6 +51,10 @@ export class EdgeListComponent implements OnInit {
   onEdit() {
     this.readonly = false;
   }
+
+  onAddEdge(){
+
+}
 
   onSubmit() {
 

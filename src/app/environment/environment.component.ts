@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ConfigdataService} from "../services/configdata.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Environment} from "../interfaces/environment";
+import {ConfigFactory} from "../classes/config-factory";
 
 @Component({
   selector: 'app-environment',
@@ -12,6 +13,7 @@ export class EnvironmentComponent implements OnInit {
   private routerSub: any;
   environment: Environment;
   readonly: boolean;
+  adding: boolean;
 
   constructor(private route: ActivatedRoute, private router: Router) {
   }
@@ -20,9 +22,14 @@ export class EnvironmentComponent implements OnInit {
   ngOnInit() {
     this.routerSub = this.route.params.subscribe(params => {
       let envId: string = params['envId']; // (+) converts string 'id' to a number
-      this.environment = ConfigdataService.getEnvironment(envId);
-      this.readonly = true;
-    });
+      if (envId === "new") {
+        this.adding = true;
+        this.readonly = false;
+        this.environment = ConfigFactory.createEnvironment();
+      } else {
+        this.environment = ConfigdataService.getEnvironment(envId);
+        this.readonly = true;
+      }    });
   }
 
   // radio button data binding does not seem to work
