@@ -1,0 +1,72 @@
+<div>
+  <h3>vCenter</h3>
+
+  <div class="row">
+    <div class="col-lg-5 col-md-6 col-sm-8 col-xs-12">
+      <h4>ID: {{vcenter.id}}
+
+        <clr-icon shape="pencil" (click)="onEdit()" *ngIf="isDisabled()"></clr-icon>
+      </h4>
+
+      <form (ngSubmit)="onSubmit()" #configForm="ngForm">
+
+        <section class="form-block">
+
+
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="vCenter Name"
+                   [(ngModel)]="vcenter.name"
+                   name="vcName"
+                   #vcName="ngModel"
+                   disabled="{{readonly}}"
+            />
+
+          </div>
+
+
+          <div class="form-group">
+            <label for="name">Host</label>
+            <input type="text" id="host" placeholder="vCenter Host"
+                   [(ngModel)]="vcenter.host"
+                   name="vcHost"
+                   #vcHost="ngModel"
+                   disabled="{{readonly}}"
+            />
+          </div>
+
+
+          <div class="form-group">
+            <label for="vcUser">User</label>
+            <input type="text" id="vcUser" placeholder="User"
+                   [(ngModel)]="vcenter.user"
+                   name="vcUser"
+                   #vcUser="ngModel"
+                   disabled="{{readonly}}"
+            />
+          </div>
+
+
+          <div class="form-group">
+            <label for="vcPassword">Password</label>
+            <input type="password" id="vcPassword" placeholder="password"
+                   [(ngModel)]="vcenter.password"
+                   name="vcPassword"
+                   #vcPassword="ngModel"
+                   disabled="{{readonly}}"
+            />
+          </div>
+
+
+        </section>
+
+        <button class="btn btn-primary" type=submit *ngIf="!isDisabled()">Save</button>
+
+        <button type="button" class="btn btn-secondary" (click)="buttonCancel()">Cancel</button>
+
+      </form>
+
+    </div>
+  </div>
+
+</div>

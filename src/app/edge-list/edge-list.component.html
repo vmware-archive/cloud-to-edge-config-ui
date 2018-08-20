@@ -1,12 +1,17 @@
-
+<h3>Edges</h3>
 
 
 <div class="row">
-  <div class="col-lg-5 col-md-6 col-sm-8 col-xs-12"  *ngFor="let edge of edges">
+  <div class="col-lg-5 col-md-6 col-sm-8 col-xs-12" *ngFor="let edge of edges">
 
     <div class="card">
       <div class="card-header">
-        {{ edge.name }} ( {{edge.id }})
+        <a class="nav-link" [routerLink]="['/environment/', environment.id,
+        'vcenter', vcenter.id,
+        'cluster', cluster.id,
+        'edge', edge.id]">
+          {{ edge.edge_group }} ( {{edge.id }})
+        </a>
 
 
       </div>
@@ -15,18 +20,17 @@
         <div class="card-text">
 
 
-          <!--<form>-->
-          <!--<section class="form-block">-->
+          <form>
+            <section class="form-block">
 
-          <!--<div class="form-group">-->
-          <!--<label for="aForm_1">Edges</label>-->
-          <!--<input disabled="true" type="text" id="aForm_1"  value="{{ getEdgeCount(cluster.id)}}">-->
-          <!--</div>-->
+              <div class="form-group">
+                <label for="dataCenter">Edge</label>
+                <input disabled type="text" id="dataCenter" value="{{ edge.edge_group}}">
+              </div>
 
 
-          <!--</section>-->
-          <!--</form>-->
-
+            </section>
+          </form>
 
         </div>
       </div>

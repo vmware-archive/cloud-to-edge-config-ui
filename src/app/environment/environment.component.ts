@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ConfigdataService} from "../services/configdata.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Environment} from "../interfaces/environment";
 
 @Component({
@@ -13,7 +13,7 @@ export class EnvironmentComponent implements OnInit {
   environment: Environment;
   readonly: boolean;
 
-  constructor(private route: ActivatedRoute, private configDataService: ConfigdataService) {
+  constructor(private route: ActivatedRoute, private router: Router) {
   }
 
 
@@ -21,7 +21,7 @@ export class EnvironmentComponent implements OnInit {
     this.routerSub = this.route.params.subscribe(params => {
       let envId: string = params['envId']; // (+) converts string 'id' to a number
       this.environment = ConfigdataService.getEnvironment(envId);
-      this.readonly = false;
+      this.readonly = true;
     });
   }
 
@@ -54,13 +54,16 @@ export class EnvironmentComponent implements OnInit {
     return isDisabled;
   }
 
+  onEdit() {
+    this.readonly = false;
+  }
 
   onSubmit() {
 
   }
 
   buttonCancel() {
-
+    this.router.navigateByUrl("environmentlist");
   }
 
 }

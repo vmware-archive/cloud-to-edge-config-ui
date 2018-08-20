@@ -1,22 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {Environment} from "../interfaces/environment";
-import {Cluster} from "../interfaces/cluster";
-import {Edge} from "../interfaces/edge";
 import {ConfigdataService} from "../services/configdata.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {vCenter} from "../interfaces/vcenter";
 
 @Component({
-  selector: 'app-edge-list',
-  templateUrl: './edge-list.component.html',
-  styleUrls: ['./edge-list.component.css']
+  selector: 'app-v-center',
+  templateUrl: './v-center.component.html',
+  styleUrls: ['./v-center.component.css']
 })
-export class EdgeListComponent implements OnInit {
+export class VCenterComponent implements OnInit {
   private routerSub: any;
   environment: Environment;
   vcenter: vCenter;
-  cluster: Cluster;
-  edges: Edge[];
 
   readonly: boolean;
 
@@ -28,12 +24,13 @@ export class EdgeListComponent implements OnInit {
     this.routerSub = this.route.params.subscribe(params => {
       let envId: string = params['envId']; // (+) converts string 'id' to a number
       let vcId: string = params['vcId']; // (+) converts string 'id' to a number
-      let clusterId: string = params['clusterId']; // (+) converts string 'id' to a number
       this.environment = ConfigdataService.getEnvironment(envId);
-      this.vcenter = ConfigdataService.getVCenter(envId, vcId);
-      this.cluster = ConfigdataService.getCluster(envId, vcId, clusterId);
-      this.edges = this.cluster.edges;
-
+      let vcenters = this.environment.vcenters;
+      for(let i=0; i<vcenters.length; i++){
+        if(vcenters[i].id == vcId){
+          this.vcenter = vcenters[i];
+        }
+      }
       this.readonly = true;
     });
   }
@@ -54,13 +51,7 @@ export class EdgeListComponent implements OnInit {
   }
 
   buttonCancel() {
-    this.router.navigateByUrl("/environment/" + this.environment.id + "/vcenter/" + this.vcenter.id + "/clusterlist");
+    this.router.navigateByUrl("/environment/" + this.environment.id + "/vcenterlist");
   }
-
-  ngOnDestroy() {
-    this.routerSub.unsubscribe();
-  }
-
-
 
 }

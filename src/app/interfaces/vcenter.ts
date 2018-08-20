@@ -1,9 +1,13 @@
+import {Cluster} from "./cluster";
+
 export interface vCenter{
+  id: string;
+  name: string;
+
   host: URL;
   user: string;
   password: string;
-  datacenter: string;
-  datastore: string;
-  cluster: string;
+
+  clusters: Cluster[]
 
 }

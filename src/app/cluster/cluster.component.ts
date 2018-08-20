@@ -1,22 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Environment} from "../interfaces/environment";
-import {Cluster} from "../interfaces/cluster";
-import {Edge} from "../interfaces/edge";
 import {ConfigdataService} from "../services/configdata.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {vCenter} from "../interfaces/vcenter";
+import {Cluster} from "../interfaces/cluster";
 
 @Component({
-  selector: 'app-edge-list',
-  templateUrl: './edge-list.component.html',
-  styleUrls: ['./edge-list.component.css']
+  selector: 'app-cluster',
+  templateUrl: './cluster.component.html',
+  styleUrls: ['./cluster.component.css']
 })
-export class EdgeListComponent implements OnInit {
+export class ClusterComponent implements OnInit {
   private routerSub: any;
   environment: Environment;
   vcenter: vCenter;
   cluster: Cluster;
-  edges: Edge[];
 
   readonly: boolean;
 
@@ -32,7 +30,6 @@ export class EdgeListComponent implements OnInit {
       this.environment = ConfigdataService.getEnvironment(envId);
       this.vcenter = ConfigdataService.getVCenter(envId, vcId);
       this.cluster = ConfigdataService.getCluster(envId, vcId, clusterId);
-      this.edges = this.cluster.edges;
 
       this.readonly = true;
     });
@@ -56,11 +53,6 @@ export class EdgeListComponent implements OnInit {
   buttonCancel() {
     this.router.navigateByUrl("/environment/" + this.environment.id + "/vcenter/" + this.vcenter.id + "/clusterlist");
   }
-
-  ngOnDestroy() {
-    this.routerSub.unsubscribe();
-  }
-
 
 
 }

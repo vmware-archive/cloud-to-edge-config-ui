@@ -1,7 +1,13 @@
 <div>
+
+  <h3>Deployment Environment</h3>
+
   <div class="row">
     <div class="col-lg-5 col-md-6 col-sm-8 col-xs-12">
-      <h3>ID: {{environment.id}}</h3>
+      <h4>ID: {{environment.id}}
+
+      <clr-icon shape="pencil" (click)="onEdit()" *ngIf="isDisabled()"></clr-icon>
+      </h4>
 
       <form (ngSubmit)="onSubmit()" #configForm="ngForm">
 
@@ -234,7 +240,7 @@
 
           <div class="form-group">
             <label for="skyway_edge_vm_password">Password</label>
-            <input type="text" id="skyway_edge_vm_password" placeholder="password"
+            <input type="password" id="skyway_edge_vm_password" placeholder="password"
                    [(ngModel)]="environment.skyway_edge_vm_password"
                    name="skyway_edge_vm_password"
                    #skyway_edge_vm_password="ngModel"
@@ -400,9 +406,11 @@
           </div>
 
         </section>
-        <button class="btn btn-primary" type=submit>Save</button>
+
+        <button class="btn btn-primary" type=submit *ngIf="!isDisabled()">Save</button>
 
         <button type="button" class="btn btn-secondary" (click)="buttonCancel()">Cancel</button>
+
       </form>
 
     </div>

@@ -24,7 +24,66 @@ export class ConfigdataService {
         ftNoDown: false,
         location: "Area 51",
         contact: "Gray Eye",
-        vcenters: [],
+        vcenters: [
+          {
+            id: 8797,
+            name: "vCenter UAT",
+            host: "vcenter-01.lab.local",
+            user: "administrator@vsphere.local",
+            password: "VMware1!",
+            clusters: [
+              {
+                id: 432,
+                vcenter_cluster: "Management Cluster",
+                "typeGG": true,
+                "typeAzure": false,
+                vcenter_datacenter: "West DC",
+                vcenter_datastore: "Tier 1",
+                vcenter_rp: "Mgmt RP",
+                vcenter_insecure: true,
+                edges: [
+                  {
+                    id: "9900",
+                    edge_group: "Edge One"
+                  },
+                  {
+                    id: "777",
+                    edge_group: "Edge Two"
+                  }
+                ]
+              },
+              {
+                id: 221,
+                vcenter_cluster: "Workload Cluster",
+                "typeGG": true,
+                "typeAzure": false,
+                vcenter_datacenter: "West DC",
+                vcenter_datastore: "Tier 2",
+                vcenter_rp: "Workload RP",
+                vcenter_insecure: true,
+                edges: [
+                  {
+                    id: "9903620",
+                    edge_group: "Edge 1"
+                  },
+                  {
+                    id: "3322",
+                    edge_group: "Edge 2"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            id: 24553,
+            name: "vCenter Prod",
+            host: "vcenter-01.corp.com",
+            user: "administrator@vsphere.local",
+            password: "VMware1!",
+            clusters: []
+          }
+
+        ],
         git_key: "0&^%&$675*&%^&*^$^&*58",
         ntpservers: "10.13.12.2",
         dnsserver: "10.13.12.2",
@@ -64,11 +123,43 @@ export class ConfigdataService {
 
   static getEnvironment(envId: string) {
     let environments = this.getEnvironmentList();
-    for(let i = 0; i < environments.length; i++){
-      if(environments[i].id === envId){
+    for (let i = 0; i < environments.length; i++) {
+      if (environments[i].id === envId) {
         return environments[i];
+      }
+    }
+  }
+
+  static getVCenter(envId: string, vcId: string) {
+    let environment = ConfigdataService.getEnvironment(envId);
+    let vcenters = environment.vcenters;
+    for (let i = 0; i < vcenters.length; i++) {
+      if (vcenters[i].id == vcId) {
+        return vcenters[i];
       }
     }
 
   }
+
+  static getCluster(envId: string, vcId: string, clusterId: string) {
+    let vcenter = ConfigdataService.getVCenter(envId, vcId);
+    let clusters = vcenter.clusters;
+    for (let i = 0; i < clusters.length; i++) {
+      if (clusters[i].id == clusterId) {
+        return clusters[i];
+      }
+    }
+  }
+
+  static getEdge(envId: string, vcId: string, clusterId: string, edgeId: string) {
+    let cluster = ConfigdataService.getCluster(envId, vcId, clusterId);
+    let edges = cluster.edges;
+    for (let i = 0; i < edges.length; i++) {
+      if (edges[i].id == edgeId) {
+        return edges[i];
+      }
+    }
+  }
+
+
 }

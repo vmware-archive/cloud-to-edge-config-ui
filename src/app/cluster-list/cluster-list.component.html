@@ -1,3 +1,4 @@
+<h3>Clusters</h3>
 
 
 <div class="row">
@@ -5,7 +6,7 @@
 
     <div class="card">
       <div class="card-header">
-        <a class="nav-link" [routerLink]="['/edgelist/', cluster.id]">{{ cluster.name }} ( {{cluster.id }})</a>
+        <a class="nav-link" [routerLink]="['/environment/', environment.id, 'vcenter', vcenter.id, 'cluster', cluster.id]">{{ cluster.vcenter_cluster }} ( {{cluster.id }})</a>
 
 
       </div>
@@ -14,17 +15,30 @@
         <div class="card-text">
 
 
-          <!--<form>-->
-            <!--<section class="form-block">-->
+          <form>
+            <section class="form-block">
 
-              <!--<div class="form-group">-->
-                <!--<label for="aForm_1">Edges</label>-->
-                <!--<input disabled="true" type="text" id="aForm_1"  value="{{ getEdgeCount(cluster.id)}}">-->
-              <!--</div>-->
+              <div class="form-group">
+                <label for="dataCenter">Datacenter</label>
+                <input disabled type="text" id="dataCenter" value="{{ cluster.vcenter_datacenter}}">
+              </div>
+
+              <div class="form-group">
+                <label for="dataStore">Datastore</label>
+                <input disabled type="text" id="dataStore" value="{{ cluster.vcenter_datastore}}">
+              </div>
+
+              <div class="form-group">
+                <label for="resourcePool">Resource Pool</label>
+                <input disabled type="text" id="resourcePool" value="{{ cluster.vcenter_rp}}">
+              </div>
 
 
-            <!--</section>-->
-          <!--</form>-->
+
+
+            </section>
+          </form>
+          <a class="nav-link" [routerLink]="['/environment/', environment.id, 'vcenter', vcenter.id, 'cluster', cluster.id, 'edgelist']">Edges</a>
 
 
         </div>

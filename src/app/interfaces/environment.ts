@@ -78,6 +78,5 @@ export interface Environment {
   greengrass_device_stub: string;
   greengrass_device_count: number;
 
-
 }
 

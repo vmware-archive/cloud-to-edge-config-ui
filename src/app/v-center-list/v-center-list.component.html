@@ -1,0 +1,39 @@
+<h3>vCenters</h3>
+
+
+<div class="row">
+
+
+  <div class="col-lg-5 col-md-6 col-sm-8 col-xs-12" *ngFor="let vcenter of vcenters">
+
+    <div class="card">
+      <div class="card-header">
+        <a class="nav-link" [routerLink]="['/environment/', environment.id, 'vcenter', vcenter.id]">{{ vcenter.name }} ( {{vcenter.id }})</a>
+
+
+      </div>
+      <div class="card-block">
+
+        <div class="card-text">
+
+
+          <form>
+            <section class="form-block">
+              <div class="form-group">
+                <label for="aForm_1">Host</label>
+                <input disabled type="text" id="aForm_1" value="{{ vcenter.host}}">
+              </div>
+
+            </section>
+          </form>
+          <a class="nav-link" [routerLink]="['/environment/', environment.id, 'vcenter', vcenter.id, 'clusterlist']">Clusters</a>
+
+
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

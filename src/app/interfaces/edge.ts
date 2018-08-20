@@ -1,7 +1,7 @@
 export interface Edge {
-  id: Number;
+  id: string;
 
-  edge_group: String;
+  edge_group: string;
 
 
 }
