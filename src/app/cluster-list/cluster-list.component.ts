@@ -4,6 +4,7 @@ import {Environment} from "../interfaces/environment";
 import {Cluster} from "../interfaces/cluster";
 import { ConfigdataService } from '../services/configdata.service';
 import {vCenter} from "../interfaces/vcenter";
+import {ConfigFactory} from "../classes/config-factory";
 
 @Component({
   selector: 'app-cluster-list',
@@ -15,6 +16,8 @@ export class ClusterListComponent implements OnInit {
   environment: Environment;
   vcenter: vCenter;
   clusters: Cluster[];
+  selectedCluster: Cluster;
+  showDeleteDialog = false;
 
   readonly: boolean;
 
@@ -29,7 +32,7 @@ export class ClusterListComponent implements OnInit {
       this.environment = ConfigdataService.getEnvironment(envId);
       this.vcenter = ConfigdataService.getVCenter(envId, vcId);
       this.clusters = this.vcenter.clusters;
-
+      this.selectedCluster = ConfigFactory.createCluster();
       this.readonly = true;
     });
   }
@@ -52,6 +55,29 @@ export class ClusterListComponent implements OnInit {
   buttonCancel() {
     this.router.navigateByUrl("/environment/" + this.environment.id + "/vcenterlist");
   }
+
+
+
+  onShowConfirmDelete(clusterId){
+
+    for(let i =0; i < this.clusters.length; i++){
+      if(this.clusters[i].id == clusterId){
+        this.selectedCluster = this.clusters[i];
+        break;
+      }
+    }
+    this.showDeleteDialog = true;
+
+  }
+
+  onDeleteConfirm(){
+    this.showDeleteDialog = false;
+
+    if(this.selectedCluster){
+      this.clusters = ConfigdataService.deleteCluster(this.environment.id, this.vcenter.id, this.selectedCluster);
+    }
+
+  };
 
   ngOnDestroy() {
     this.routerSub.unsubscribe();

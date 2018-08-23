@@ -3,22 +3,36 @@
   or configured
 </div>
 
+<clr-modal [(clrModalOpen)]="showDeleteDialog">
+  <h3 class="modal-title">Confirm Delete</h3>
+  <div class="modal-body">
+    <p>Delete Environment: {{ selectedEnvironment.name}}  ({{selectedEnvironment.id}}) ?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="showDeleteDialog = false">Cancel</button>
+    <button type="button" class="btn btn-primary"  data-dismiss="modal" (click)="onDeleteConfirm()">Ok</button>
+  </div>
+</clr-modal>
+
 
 <h3>Deployment Environments
   <a class="nav-link" [routerLink]="['/environment/', 'new']">
-    <clr-icon shape="plus"></clr-icon>
+    <clr-icon shape="plus" style="cursor: pointer"></clr-icon>
   </a>
 </h3>
 
-<div class="row">
 
+<div class="row" >
 
   <div class="col-lg-5 col-md-6 col-sm-8 col-xs-12" *ngFor="let env of environments">
 
-    <div class="card">
+    <div class="card" *ngIf="env">
       <div class="card-header">
         <a class="nav-link" [routerLink]="['/environment/', env.id]">{{ env.name }} ( {{env.id }})</a>
 
+        <a class="nav-link" style="float: right; cursor: pointer" (click)="onShowConfirmDelete( env.id )">
+          <clr-icon shape="trash"></clr-icon>
+        </a>
 
       </div>
       <div class="card-block">
@@ -51,4 +65,8 @@
 
 
   </div>
+
+
+
 </div>
+

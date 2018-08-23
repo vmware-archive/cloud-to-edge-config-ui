@@ -5,6 +5,7 @@ import {Edge} from "../interfaces/edge";
 import {ConfigdataService} from "../services/configdata.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {vCenter} from "../interfaces/vcenter";
+import {ConfigFactory} from "../classes/config-factory";
 
 @Component({
   selector: 'app-edge-list',
@@ -17,6 +18,8 @@ export class EdgeListComponent implements OnInit {
   vcenter: vCenter;
   cluster: Cluster;
   edges: Edge[];
+  selectedEdge: Edge;
+  showDeleteDialog = false;
 
   readonly: boolean;
   adding: boolean;
@@ -34,6 +37,7 @@ export class EdgeListComponent implements OnInit {
       this.vcenter = ConfigdataService.getVCenter(envId, vcId);
       this.cluster = ConfigdataService.getCluster(envId, vcId, clusterId);
       this.edges = this.cluster.edges;
+      this.selectedEdge = ConfigFactory.createEdge(this.environment);
 
       this.readonly = true;
       this.adding = true;
@@ -68,6 +72,27 @@ export class EdgeListComponent implements OnInit {
     this.routerSub.unsubscribe();
   }
 
+
+  onShowConfirmDelete(edgeId){
+
+    for(let i =0; i < this.edges.length; i++){
+      if(this.edges[i].id == edgeId){
+        this.selectedEdge = this.edges[i];
+        break;
+      }
+    }
+    this.showDeleteDialog = true;
+
+  }
+
+  onDeleteConfirm(){
+    this.showDeleteDialog = false;
+
+    if(this.selectedEdge){
+      this.edges = ConfigdataService.deleteEdge(this.environment.id, this.vcenter.id, this.cluster.id, this.selectedEdge);
+    }
+
+  };
 
 
 }

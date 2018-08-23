@@ -32,13 +32,7 @@ export class EnvironmentComponent implements OnInit {
       }    });
   }
 
-  // radio button data binding does not seem to work
-  onRadioClickDeploymentType() {
-    if (!this.readonly) {
-      this.environment.deployCustom = !this.environment.deployCustom;
-      this.environment.deployUniform = !this.environment.deployUniform;
-    }
-  }
+
 
   onRadioClickFaultToleranceType() {
     if (!this.readonly) {
@@ -66,6 +60,8 @@ export class EnvironmentComponent implements OnInit {
   }
 
   onSubmit() {
+    ConfigdataService.setEnvironment(this.environment);
+    this.router.navigateByUrl("environmentlist");
 
   }
 

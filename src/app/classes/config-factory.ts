@@ -26,7 +26,7 @@ export class ConfigFactory {
   }
 
   static createVCenter(): vCenter {
-    let url = new URL("");
+    let url = new URL("http://localhost");
     return {
       id: "",
       name: "",

@@ -1,6 +1,6 @@
 <div>
 
-  <h3>Deployment Environment</h3>
+  <h3>Global Deployment Job Parameters</h3>
 
   <div class="row">
     <div class="col-lg-5 col-md-6 col-sm-8 col-xs-12">
@@ -23,31 +23,6 @@
 
 
           <div class="form-group">
-            <label>Deployment Type</label>
-
-            <div class="radio-inline">
-              <input type="radio" id="deployment_uniform"
-                     (click)="onRadioClickDeploymentType()"
-                     [checked]="environment.deployUniform"
-                     [value]="true"
-                     name="deploymentType"
-                     [disabled]="isDisabled()"
-              >
-              <label for="deployment_uniform">Uniform</label>
-            </div>
-            <div class="radio-inline">
-              <input type="radio" id="deployment_custom"
-                     (click)="onRadioClickDeploymentType()"
-                     [checked]="environment.deployCustom"
-                     [value]="true"
-                     name="deploymentType"
-                     [disabled]="isDisabled()"
-              >
-              <label for="deployment_custom">Custom</label>
-            </div>
-          </div>
-
-          <div class="form-group">
             <label>Cloud Targets</label>
 
             <div class="checkbox-inline">
@@ -58,7 +33,7 @@
                      name="cloudType_azure"
                      [disabled]="isDisabled()"
               >
-              <label for="cloud_azure">Azure</label>
+              <label for="cloud_azure">Azure IOT Edge</label>
             </div>
 
 
@@ -70,56 +45,138 @@
                      name="cloudType_greengrass"
                      [disabled]="isDisabled()"
               >
-              <label for="cloud_greengrass">GreenGrass</label>
+              <label for="cloud_greengrass">AWS GreenGrass</label>
             </div>
 
           </div>
 
           <div class="form-group" *ngIf="!isFaultToleranceDisabled()">
-            <label>Fault Tolerance</label>
+            <label>No Downtime Mode</label>
 
-            <div class="radio-inline">
-              <input type="radio" id="ft_standard"
-                     (click)="onRadioClickFaultToleranceType()"
-                     [checked]="environment.ftStandard"
-                     [value]="true"
-                     name="ftType"
-                     [disabled]="isFaultToleranceDisabled()"
-              >
-              <label for="ft_standard">Standard</label>
-            </div>
-            <div class="radio-inline">
-              <input type="radio" id="ft_nodown"
+
+            <div class="checkbox-inline">
+              <input type="checkbox" id="ft_nodown"
                      (click)="onRadioClickFaultToleranceType()"
                      [checked]="environment.ftNoDown"
                      [value]="true"
                      name="ftType"
                      [disabled]="isFaultToleranceDisabled()"
               >
-              <label for="ft_nodown">No Down</label>
+              <label for="ft_nodown"></label>
             </div>
           </div>
 
 
-          <div class="form-group">
-            <label for="location">Location</label>
-            <input type="text" id="location" placeholder="Location"
-                   [(ngModel)]="environment.location"
-                   name="envLocation"
-                   #envLocation="ngModel"
-                   disabled="{{readonly}}"
-            />
+
+          <div *ngIf="environment.typeAzure">
+            <h3>Azure</h3>
+
+            <div class="form-group">
+              <label for="azure_cli_application_id">Azure CLI Application ID</label>
+              <input type="text" id="azure_cli_application_id" placeholder="ID"
+                     [(ngModel)]="environment.azure_cli_application_id"
+                     name="envCLI"
+                     #envCLI="ngModel"
+                     disabled="{{readonly}}"
+              />
+            </div>
+
+
+            <div class="form-group">
+              <label for="azure_cli_application_key">Azure CLI Application Key</label>
+              <input type="text" id="azure_cli_application_key" placeholder="Key"
+                     [(ngModel)]="environment.azure_cli_application_key"
+                     name="azure_cli_application_key"
+                     #azure_cli_application_key="ngModel"
+                     disabled="{{readonly}}"
+              />
+            </div>
+
+
+            <div class="form-group">
+              <label for="azure_cli_tenant_id">Azure CLI Tenant ID</label>
+              <input type="text" id="azure_cli_tenant_id" placeholder="ID"
+                     [(ngModel)]="environment.azure_cli_tenant_id"
+                     name="azure_cli_tenant_id"
+                     #azure_cli_tenant_id="ngModel"
+                     disabled="{{readonly}}"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="azure_iot_hub_name">Azure IOT Hub Name</label>
+              <input type="text" id="azure_iot_hub_name" placeholder="Hub Name"
+                     [(ngModel)]="environment.azure_iot_hub_name"
+                     name="azure_iot_hub_name"
+                     #azure_iot_hub_name="ngModel"
+                     disabled="{{readonly}}"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="azure_iot_group">Azure IOT Resource Group</label>
+              <input type="text" id="azure_iot_group" placeholder="IOT Group"
+                     [(ngModel)]="environment.azure_iot_group"
+                     name="azure_iot_group"
+                     #azure_iot_group="ngModel"
+                     disabled="{{readonly}}"
+              />
+            </div>
+
+
           </div>
 
-          <div class="form-group">
-            <label for="contact">Contact</label>
-            <input type="text" id="contact" placeholder="Contact"
-                   [(ngModel)]="environment.contact"
-                   name="envContact"
-                   #envContact="ngModel"
-                   disabled="{{readonly}}"
-            />
+          <div *ngIf="environment.typeGG">
+            <h3>GreenGrass</h3>
+            <div class="form-group">
+              <label for="aws_access_key">AWS Access Key</label>
+              <input type="text" id="aws_access_key" placeholder="Key"
+                     [(ngModel)]="environment.aws_access_key"
+                     name="aws_access_key"
+                     #aws_access_key="ngModel"
+                     disabled="{{readonly}}"
+              />
+            </div>
+            <div class="form-group">
+              <label for="aws_secret_key">AWS Secret Key</label>
+              <input type="text" id="aws_secret_key" placeholder="Secret"
+                     [(ngModel)]="environment.aws_secret_key"
+                     name="aws_secret_key"
+                     #aws_secret_key="ngModel"
+                     disabled="{{readonly}}"
+              />
+            </div>
+            <div class="form-group">
+              <label for="greengrass_s3_bucket">S3 Bucket</label>
+              <input type="text" id="greengrass_s3_bucket" placeholder="Bucket"
+                     [(ngModel)]="environment.greengrass_s3_bucket"
+                     name="greengrass_s3_bucket"
+                     #greengrass_s3_bucket="ngModel"
+                     disabled="{{readonly}}"
+              />
+            </div>
+            <div class="form-group">
+              <label for="greengrass_device_stub">Device Stub</label>
+              <input type="text" id="greengrass_device_stub" placeholder="Stub"
+                     [(ngModel)]="environment.greengrass_device_stub"
+                     name="greengrass_device_stub"
+                     #greengrass_device_stub="ngModel"
+                     disabled="{{readonly}}"
+              />
+            </div>
+            <div class="form-group">
+              <label for="greengrass_device_count">GreenGrass Group</label>
+              <input type="text" id="greengrass_device_count" placeholder="IOT Group"
+                     [(ngModel)]="environment.greengrass_device_count"
+                     name="greengrass_device_count"
+                     #greengrass_device_count="ngModel"
+                     disabled="{{readonly}}"
+              />
+            </div>
+
           </div>
+
+          <h3>Network</h3>
 
 
           <div class="form-group">
@@ -172,78 +229,14 @@
             />
           </div>
 
-          <div class="form-group">
-            <label for="binary_webserver">Binary Webserver</label>
-            <input type="text" id="binary_webserver" placeholder="Binary Webserver"
-                   [(ngModel)]="environment.binary_webserver"
-                   name="binary_webserver"
-                   #binary_webserver="ngModel"
-                   disabled="{{readonly}}"
-            />
-          </div>
-
+          <h3>Edge</h3>
 
           <div class="form-group">
-            <label for="base_ova_name">Base OVA</label>
-            <input type="text" id="base_ova_name" placeholder="Base OVA"
-                   [(ngModel)]="environment.base_ova_name"
-                   name="base_ova_name"
-                   #base_ova_name="ngModel"
-                   disabled="{{readonly}}"
-            />
-          </div>
-
-
-          <div class="form-group">
-            <label for="base_ova_name_arm">Base OVA ARM</label>
-            <input type="text" id="base_ova_name_arm" placeholder="Base OVA Arm"
-                   [(ngModel)]="environment.base_ova_name_arm"
-                   name="base_ova_name_arm"
-                   #base_ova_name_arm="ngModel"
-                   disabled="{{readonly}}"
-            />
-          </div>
-
-
-          <div class="form-group">
-            <label for="ovftool_image">OVF Tool Image</label>
-            <input type="text" id="ovftool_image" placeholder="OVF Tool Image"
-                   [(ngModel)]="environment.ovftool_image"
-                   name="ovftool_image"
-                   #ovftool_image="ngModel"
-                   disabled="{{readonly}}"
-            />
-          </div>
-
-
-          <div class="form-group">
-            <label for="skyway_edge_vm_basename">Edge VM Basename</label>
+            <label for="skyway_edge_vm_basename">Edge</label>
             <input type="text" id="skyway_edge_vm_basename" placeholder="VM Basename"
                    [(ngModel)]="environment.skyway_edge_vm_basename"
                    name="skyway_edge_vm_basename"
                    #skyway_edge_vm_basename="ngModel"
-                   disabled="{{readonly}}"
-            />
-          </div>
-
-
-          <div class="form-group">
-            <label for="skyway_edge_vm_user">User</label>
-            <input type="text" id="skyway_edge_vm_user" placeholder="User"
-                   [(ngModel)]="environment.skyway_edge_vm_user"
-                   name="skyway_edge_vm_user"
-                   #skyway_edge_vm_user="ngModel"
-                   disabled="{{readonly}}"
-            />
-          </div>
-
-
-          <div class="form-group">
-            <label for="skyway_edge_vm_password">Password</label>
-            <input type="password" id="skyway_edge_vm_password" placeholder="password"
-                   [(ngModel)]="environment.skyway_edge_vm_password"
-                   name="skyway_edge_vm_password"
-                   #skyway_edge_vm_password="ngModel"
                    disabled="{{readonly}}"
             />
           </div>
@@ -260,17 +253,6 @@
           </div>
 
 
-          <div class="form-group">
-            <label for="git_key">Git SSH Key</label>
-            <textarea id="git_key" rows="5"
-                      [(ngModel)]="environment.git_key"
-                      name="gitKey"
-                      #gitKey="ngModel"
-                      disabled="{{readonly}}"
-            >
-
-            </textarea>
-          </div>
 
           <div class="form-group">
             <label for="skyway_edge_vm_ssh_priv_key">Edge SSH Private Key</label>
@@ -294,115 +276,6 @@
             >
 
             </textarea>
-          </div>
-
-
-          <div *ngIf="environment.typeAzure">
-            <h3>Azure</h3>
-
-            <div class="form-group">
-              <label for="azure_cli_application_id">Azure CLI Application ID</label>
-              <input type="text" id="azure_cli_application_id" placeholder="ID"
-                     [(ngModel)]="environment.azure_cli_application_id"
-                     name="envCLI"
-                     #envCLI="ngModel"
-                     disabled="{{readonly}}"
-              />
-            </div>
-
-
-            <div class="form-group">
-              <label for="azure_cli_application_key">Azure CLI Application Key</label>
-              <input type="text" id="azure_cli_application_key" placeholder="Key"
-                     [(ngModel)]="environment.azure_cli_application_key"
-                     name="azure_cli_application_key"
-                     #azure_cli_application_key="ngModel"
-                     disabled="{{readonly}}"
-              />
-            </div>
-
-
-            <div class="form-group">
-              <label for="azure_cli_tenant_id">Azure CLI Tenant ID</label>
-              <input type="text" id="azure_cli_tenant_id" placeholder="ID"
-                     [(ngModel)]="environment.azure_cli_tenant_id"
-                     name="azure_cli_tenant_id"
-                     #azure_cli_tenant_id="ngModel"
-                     disabled="{{readonly}}"
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="azure_iot_hub_name">Azure IOT Hub Name</label>
-              <input type="text" id="azure_iot_hub_name" placeholder="Hub Name"
-                     [(ngModel)]="environment.azure_iot_hub_name"
-                     name="azure_iot_hub_name"
-                     #azure_iot_hub_name="ngModel"
-                     disabled="{{readonly}}"
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="azure_iot_group">Azure IOT Group</label>
-              <input type="text" id="azure_iot_group" placeholder="IOT Group"
-                     [(ngModel)]="environment.azure_iot_group"
-                     name="azure_iot_group"
-                     #azure_iot_group="ngModel"
-                     disabled="{{readonly}}"
-              />
-            </div>
-
-
-          </div>
-
-          <div *ngIf="environment.typeGG">
-            <h3>GreenGrass</h3>
-            <div class="form-group">
-              <label for="aws_access_key">AWS Access Key</label>
-              <input type="text" id="aws_access_key" placeholder="Key"
-                     [(ngModel)]="environment.aws_access_key"
-                     name="aws_access_key"
-                     #aws_access_key="ngModel"
-                     disabled="{{readonly}}"
-              />
-            </div>
-            <div class="form-group">
-              <label for="aws_secret_key">AWS Secret Key</label>
-              <input type="text" id="aws_secret_key" placeholder="Secret"
-                     [(ngModel)]="environment.aws_secret_key"
-                     name="aws_secret_key"
-                     #aws_secret_key="ngModel"
-                     disabled="{{readonly}}"
-              />
-            </div>
-            <div class="form-group">
-              <label for="greengrass_s3_bucket">S3 Bucket</label>
-              <input type="text" id="greengrass_s3_bucket" placeholder="Bucket"
-                     [(ngModel)]="environment.greengrass_s3_bucket"
-                     name="greengrass_s3_bucket"
-                     #greengrass_s3_bucket="ngModel"
-                     disabled="{{readonly}}"
-              />
-            </div>
-            <div class="form-group">
-              <label for="greengrass_device_stub">Device Stub</label>
-              <input type="text" id="greengrass_device_stub" placeholder="Stub"
-                     [(ngModel)]="environment.greengrass_device_stub"
-                     name="greengrass_device_stub"
-                     #greengrass_device_stub="ngModel"
-                     disabled="{{readonly}}"
-              />
-            </div>
-            <div class="form-group">
-              <label for="greengrass_device_count">Azure IOT Group</label>
-              <input type="text" id="greengrass_device_count" placeholder="IOT Group"
-                     [(ngModel)]="environment.greengrass_device_count"
-                     name="greengrass_device_count"
-                     #greengrass_device_count="ngModel"
-                     disabled="{{readonly}}"
-              />
-            </div>
-
           </div>
 
         </section>

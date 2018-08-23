@@ -147,6 +147,19 @@ export class ConfigdataService {
     environments.push(environment);
   }
 
+
+  static deleteEnvironment(deleteEnvironment: Environment) : Environment[] {
+    let environments = this.getEnvironmentList();
+    for (let i = 0; i < environments.length; i++) {
+      if (environments[i].id === deleteEnvironment.id) {
+        delete environments[i];
+        break;
+      }
+    }
+    return this.getEnvironmentList();
+  }
+
+
   static getVCenter(envId: string, vcId: string): vCenter {
     let environment = ConfigdataService.getEnvironment(envId);
     let vcenters = environment.vcenters;
@@ -171,6 +184,18 @@ export class ConfigdataService {
       vcenter.id = this.getHashCode(vcenter.host.toString());
     }
     vcenters.push(vcenter);
+  }
+
+  static deleteVCenter(envId: string, vcenter: vCenter): vCenter[] {
+    let environment = ConfigdataService.getEnvironment(envId);
+    let vcenters = environment.vcenters;
+    for (let i = 0; i < vcenters.length; i++) {
+      if (vcenters[i].id == vcenter.id) {
+        delete vcenters[i];
+        break;
+      }
+    }
+  return vcenters
   }
 
   static getCluster(envId: string, vcId: string, clusterId: string): Cluster {
@@ -198,7 +223,17 @@ export class ConfigdataService {
     clusters.push(cluster);
   }
 
-
+  static deleteCluster(envId: string, vcId: string, selectedCluster: Cluster): Cluster[] {
+    let vcenter = ConfigdataService.getVCenter(envId, vcId);
+    let clusters = vcenter.clusters;
+    for (let i = 0; i < clusters.length; i++) {
+      if (clusters[i].id == selectedCluster.id) {
+        delete clusters[i];
+        break;
+      }
+    }
+    return clusters
+  }
 
 
   static getEdge(envId: string, vcId: string, clusterId: string, edgeId: string): Edge {
@@ -226,6 +261,19 @@ export class ConfigdataService {
     edges.push(edge);
   }
 
+  static deleteEdge(envId: string, vcId: string, clusterId: string, edge: Edge): Edge[] {
+    let cluster = ConfigdataService.getCluster(envId, vcId, clusterId);
+    let edges = cluster.edges;
+    for (let i = 0; i < edges.length; i++) {
+      if (edges[i].id == edge.id) {
+        delete edges[i];
+        break;
+      }
+    }
+    return edges;
+  }
+
+
   static getHashCode(str: string): string {
     var hash = 0, i, chr;
     if (str.length === 0) {
@@ -239,4 +287,6 @@ export class ConfigdataService {
     }
     return hash.toString(10);
   };
+
+
 }
