@@ -14,11 +14,12 @@ import {ClusterListComponent} from './cluster-list/cluster-list.component';
 import {EdgeListComponent} from './edge-list/edge-list.component';
 import {AppRoutingModule} from "./app-routing/app-routing.module";
 import {LoadConfigComponent} from './load-config/load-config.component';
-import { EnvironmentComponent } from './environment/environment.component';
-import { VCenterListComponent } from './v-center-list/v-center-list.component';
-import { VCenterComponent } from './v-center/v-center.component';
-import { ClusterComponent } from './cluster/cluster.component';
-import { EdgeComponent } from './edge/edge.component';
+import {EnvironmentComponent} from './environment/environment.component';
+import {VCenterListComponent} from './v-center-list/v-center-list.component';
+import {VCenterComponent} from './v-center/v-center.component';
+import {ClusterComponent} from './cluster/cluster.component';
+import {EdgeComponent} from './edge/edge.component';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { EdgeComponent } from './edge/edge.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     ClarityModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -49,6 +51,8 @@ import { EdgeComponent } from './edge/edge.component';
 
 
 export class AppModule {
+  constructor() {
+  }
 }
 
 

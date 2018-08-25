@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Environment} from "../interfaces/environment";
 import {Edge} from "../interfaces/edge";
 import {ConfigFactory} from "../classes/config-factory";
+import {HttpConfigService} from "../services/http-config.service";
 
 @Component({
   selector: 'app-edge',
@@ -22,7 +23,9 @@ export class EdgeComponent implements OnInit {
   readonly: boolean;
   adding: boolean;
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private httpConfig: HttpConfigService) {
   }
 
 
@@ -63,7 +66,8 @@ export class EdgeComponent implements OnInit {
   onSubmit() {
 
     ConfigdataService.setEdge(this.environment.id, this.vcenter.id, this.cluster.id, this.edge);
-    this.router.navigateByUrl("/environment/" + this.environment.id + "/vcenter/" + this.vcenter.id + "/cluster/" + this.cluster.id + "/edgelist");
+    this.httpConfig.saveConfig(ConfigdataService.getConfig())
+      .then(response => this.router.navigateByUrl("/environment/" + this.environment.id + "/vcenter/" + this.vcenter.id + "/cluster/" + this.cluster.id + "/edgelist"));
 
   }
 

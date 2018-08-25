@@ -4,6 +4,7 @@ import {ConfigdataService} from "../services/configdata.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {vCenter} from "../interfaces/vcenter";
 import {ConfigFactory} from "../classes/config-factory";
+import {HttpConfigService} from "../services/http-config.service";
 
 @Component({
   selector: 'app-v-center',
@@ -18,7 +19,9 @@ export class VCenterComponent implements OnInit {
   readonly: boolean;
   adding: boolean;
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private httpConfig: HttpConfigService) {
   }
 
   ngOnInit() {
@@ -50,7 +53,9 @@ export class VCenterComponent implements OnInit {
 
   onSubmit() {
     ConfigdataService.setVCenter(this.environment.id, this.vcenter);
-    this.router.navigateByUrl("/environment/" + this.environment.id + "/vcenterlist");
+    this.httpConfig.saveConfig(ConfigdataService.getConfig())
+      .then(response => this.router.navigateByUrl("/environment/" + this.environment.id + "/vcenterlist"));
+
   }
 
   buttonCancel() {

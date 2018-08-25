@@ -15,13 +15,8 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.configData = ConfigdataService.getConfig();
-    console.log("Data:" + JSON.stringify(this.configData));
 
-  }
 
-  showData(){
-    return JSON.stringify(this.configData);
   }
 
 }

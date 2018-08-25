@@ -4,18 +4,6 @@
 
       <form (ngSubmit)="onSubmit()"  #configForm="ngForm">
         <section class="form-block">
-          <div class="form-group">
-            <label for="format">Format</label>
-
-            <div class="select">
-
-              <select id="format"  [(ngModel)]="formatType" name="format" #format="ngModel">
-                <option>javascript</option>
-                <option disabled>yaml</option>
-                <option disabled>csv</option>
-              </select>
-            </div>
-          </div>
 
           <div class="form-group">
             <label for="config">Configuration</label>

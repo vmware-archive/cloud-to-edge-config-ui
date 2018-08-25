@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
 import {ConfigdataService} from "../services/configdata.service";
+import {HttpConfigService} from "../services/http-config.service";
 
 
 @Component({
@@ -10,49 +11,35 @@ import {ConfigdataService} from "../services/configdata.service";
 })
 export class LoadConfigComponent implements OnInit {
   configData = "";
-  formatType = "javascript";
 
 
-  constructor(private router: Router  ) {
+  constructor(private router: Router, private httpConfig: HttpConfigService) {
   }
 
   ngOnInit() {
-    this.configData = JSON.stringify(ConfigdataService.getConfig());
+
+    this.httpConfig.loadConfig().subscribe(configData => {
+      ConfigdataService.setConfig(configData);
+      this.configData = JSON.stringify(ConfigdataService.getConfig());
+
+    });
 
 
   }
 
-  saveJavascript(){
-    ConfigdataService.setConfig(JSON.parse(this.configData));
-  }
-
-  saveYaml(){
-alert("YAML is not yet supported");
-  }
-
-  saveCsv(){
-    alert("CSV is not yet supported");
+  saveJavascript() {
+    ConfigdataService.setConfigString(this.configData);
+    this.httpConfig.saveConfig(ConfigdataService.getConfig())
   }
 
 
-  onSubmit(){
-    switch (this.formatType){
-      case "javascript":
-        this.saveJavascript();
-        break;
-      case "yaml":
-        this.saveYaml();
-        break;
-      case "csv":
-        this.saveCsv();
-        break;
-
-    }
+  onSubmit() {
+    this.saveJavascript();
 
     this.router.navigateByUrl("environmentlist");
   }
 
-  buttonCancel(){
+  buttonCancel() {
     this.router.navigateByUrl("home");
 
   }

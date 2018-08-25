@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {vCenter} from "../interfaces/vcenter";
 import {Cluster} from "../interfaces/cluster";
 import {ConfigFactory} from "../classes/config-factory";
+import {HttpConfigService} from "../services/http-config.service";
 
 @Component({
   selector: 'app-cluster',
@@ -20,7 +21,9 @@ export class ClusterComponent implements OnInit {
   readonly: boolean;
   adding: boolean;
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private httpConfig: HttpConfigService) {
   }
 
 
@@ -56,7 +59,8 @@ export class ClusterComponent implements OnInit {
 
   onSubmit() {
     ConfigdataService.setCluster(this.environment.id, this.vcenter.id, this.cluster);
-    this.router.navigateByUrl("/environment/" + this.environment.id + "/vcenter/" + this.vcenter.id + "/clusterlist");
+    this.httpConfig.saveConfig(ConfigdataService.getConfig())
+      .then(response => this.router.navigateByUrl("/environment/" + this.environment.id + "/vcenter/" + this.vcenter.id + "/clusterlist"));
 
   }
 

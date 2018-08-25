@@ -3,6 +3,7 @@ import {ConfigdataService} from "../services/configdata.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Environment} from "../interfaces/environment";
 import {ConfigFactory} from "../classes/config-factory";
+import {HttpConfigService} from "../services/http-config.service";
 
 @Component({
   selector: 'app-environment',
@@ -15,7 +16,9 @@ export class EnvironmentComponent implements OnInit {
   readonly: boolean;
   adding: boolean;
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private httpConfig: HttpConfigService) {
   }
 
 
@@ -61,7 +64,8 @@ export class EnvironmentComponent implements OnInit {
 
   onSubmit() {
     ConfigdataService.setEnvironment(this.environment);
-    this.router.navigateByUrl("environmentlist");
+    this.httpConfig.saveConfig(ConfigdataService.getConfig())
+      .then(response => this.router.navigateByUrl("environmentlist"));
 
   }
 

@@ -6,6 +6,7 @@ import {ConfigdataService} from "../services/configdata.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {vCenter} from "../interfaces/vcenter";
 import {ConfigFactory} from "../classes/config-factory";
+import {HttpConfigService} from "../services/http-config.service";
 
 @Component({
   selector: 'app-edge-list',
@@ -24,7 +25,9 @@ export class EdgeListComponent implements OnInit {
   readonly: boolean;
   adding: boolean;
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private httpConfig: HttpConfigService) {
   }
 
 
@@ -52,17 +55,11 @@ export class EdgeListComponent implements OnInit {
     return this.readonly;
   }
 
-  onEdit() {
-    this.readonly = false;
-  }
 
   onAddEdge(){
 
 }
 
-  onSubmit() {
-
-  }
 
   buttonCancel() {
     this.router.navigateByUrl("/environment/" + this.environment.id + "/vcenter/" + this.vcenter.id + "/clusterlist");
@@ -90,6 +87,8 @@ export class EdgeListComponent implements OnInit {
 
     if(this.selectedEdge){
       this.edges = ConfigdataService.deleteEdge(this.environment.id, this.vcenter.id, this.cluster.id, this.selectedEdge);
+      this.httpConfig.saveConfig(ConfigdataService.getConfig())
+
     }
 
   };

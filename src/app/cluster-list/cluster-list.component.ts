@@ -5,6 +5,7 @@ import {Cluster} from "../interfaces/cluster";
 import { ConfigdataService } from '../services/configdata.service';
 import {vCenter} from "../interfaces/vcenter";
 import {ConfigFactory} from "../classes/config-factory";
+import {HttpConfigService} from "../services/http-config.service";
 
 @Component({
   selector: 'app-cluster-list',
@@ -21,7 +22,9 @@ export class ClusterListComponent implements OnInit {
 
   readonly: boolean;
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private httpConfig: HttpConfigService) {
   }
 
 
@@ -44,18 +47,6 @@ export class ClusterListComponent implements OnInit {
     return this.readonly;
   }
 
-  onEdit() {
-    this.readonly = false;
-  }
-
-  onSubmit() {
-
-  }
-
-  buttonCancel() {
-    this.router.navigateByUrl("/environment/" + this.environment.id + "/vcenterlist");
-  }
-
 
 
   onShowConfirmDelete(clusterId){
@@ -75,6 +66,8 @@ export class ClusterListComponent implements OnInit {
 
     if(this.selectedCluster){
       this.clusters = ConfigdataService.deleteCluster(this.environment.id, this.vcenter.id, this.selectedCluster);
+      this.httpConfig.saveConfig(ConfigdataService.getConfig())
+
     }
 
   };

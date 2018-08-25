@@ -5,6 +5,7 @@ import {Environment} from "../interfaces/environment";
 import {vCenter} from "../interfaces/vcenter";
 import {Cluster} from "../interfaces/cluster";
 import {ConfigFactory} from "../classes/config-factory";
+import {HttpConfigService} from "../services/http-config.service";
 
 @Component({
   selector: 'app-v-center-list',
@@ -20,7 +21,8 @@ export class VCenterListComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private httpConfig: HttpConfigService) { }
 
   ngOnInit() {
 
@@ -56,6 +58,8 @@ export class VCenterListComponent implements OnInit {
 
     if(this.selectedVCenter){
       this.vcenters = ConfigdataService.deleteVCenter(this.environment.id, this.selectedVCenter);
+      this.httpConfig.saveConfig(ConfigdataService.getConfig())
+
     }
 
   };

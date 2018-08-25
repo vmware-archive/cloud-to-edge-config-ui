@@ -3,6 +3,8 @@
   or configured
 </div>
 
+<div *ngIf="environments">
+
 <clr-modal [(clrModalOpen)]="showDeleteDialog">
   <h3 class="modal-title">Confirm Delete</h3>
   <div class="modal-body">
@@ -29,7 +31,9 @@
     <div class="card" *ngIf="env">
       <div class="card-header">
         <a class="nav-link" [routerLink]="['/environment/', env.id]">{{ env.name }} ( {{env.id }})</a>
-
+        <a class="nav-link" style="cursor: pointer" title="Export YAML" (click)="onExportYaml( env.id )">
+          <clr-icon shape="download"></clr-icon>
+        </a>
         <a class="nav-link" style="float: right; cursor: pointer" (click)="onShowConfirmDelete( env.id )">
           <clr-icon shape="trash"></clr-icon>
         </a>
@@ -70,3 +74,4 @@
 
 </div>
 
+</div>
