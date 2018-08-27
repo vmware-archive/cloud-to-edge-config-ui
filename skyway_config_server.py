@@ -1,9 +1,10 @@
 import json
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import yaml
 
 portNum = "4201"
-configFileName = "skyway-config-ui.json"
+configFileName = "skyway-config-ui.yml"
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -25,8 +26,13 @@ def loadConfig():
   response = {}
   try:
     configFile = open(configFileName, mode='r', encoding='utf-8')
-    response = json.load(configFile)
-    # print ("Response Payload:", response)
+
+    #response = json.load(configFile)
+
+    response = yaml.load(configFile)
+
+    print ("Response Payload:", response)
+
     configFile.close()
   except IOError:
     print("Error opening file:" + configFileName)
@@ -41,7 +47,11 @@ def saveConfig():
   #print ("Request Payload:", content)
   try:
     configFile = open(configFileName, mode='w', encoding='utf-8')
-    json.dump(content, configFile)
+
+    # json.dump(content, configFile)
+    yaml.dump(content, configFile, default_flow_style=False)
+
+
     configFile.close()
   except IOError:
     print("Error opening file:" + configFileName)
@@ -59,11 +69,12 @@ def exportYaml():
   filename = content['name'] + "-" + content['id'] + ".yml"
   print ("YAML File:", filename)
   try:
-    yamlFile = open(filename, mode='w', encoding='utf-8')
-    # TODO Convert contents of env to yaml format
-    yaml = convertJsonToYaml(content)
-    yamlFile.write(yaml)
+    yamlContent = convertToExportStructure(content)
+
+    with open(filename, 'w') as yamlFile:
+      yaml.dump(yamlContent, yamlFile, default_flow_style=False)
     yamlFile.close()
+
   except IOError:
     print("Error opening file:" + yamlFile)
 
@@ -71,11 +82,11 @@ def exportYaml():
   return jsonify({"response": "OK"})
 
 
-def convertJsonToYaml(json):
+def convertToExportStructure(json):
     yaml = ""
     yaml += json['name']
 
-    return yaml
+    return json;
 
 
 

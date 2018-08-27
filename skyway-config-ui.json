@@ -108,54 +108,6 @@
           "user": "administrator@vsphere.local"
         }
       ]
-    },
-    {
-      "aws_access_key": "",
-      "aws_secret_key": "",
-      "azure_cli_application_id": "",
-      "azure_cli_application_key": "",
-      "azure_cli_tenant_id": "",
-      "azure_iot_group": "",
-      "azure_iot_hub_name": "",
-      "base_ova_name": "",
-      "base_ova_name_arm": "",
-      "binary_webserver": "",
-      "contact": "",
-      "defaultgateway": "",
-      "deployCustom": false,
-      "deployUniform": true,
-      "dnsdomain": "",
-      "dnsserver": "",
-      "ftNoDown": false,
-      "ftStandard": true,
-      "git_key": "",
-      "greengrass_device_count": 1,
-      "greengrass_device_stub": "",
-      "greengrass_s3_bucket": "",
-      "id": "687219456",
-      "location": "",
-      "name": "and another one",
-      "netmask": "",
-      "ntpservers": "",
-      "ovftool_image": "",
-      "skyway_edge_vm_basename": "",
-      "skyway_edge_vm_network": "",
-      "skyway_edge_vm_password": "",
-      "skyway_edge_vm_ssh_priv_key": "",
-      "skyway_edge_vm_ssh_pub_key": "",
-      "skyway_edge_vm_user": "",
-      "typeAzure": false,
-      "typeGG": true,
-      "vcenters": [
-        {
-          "id": "-1693809010",
-          "name": "and another one",
-          "host": {},
-          "user": "",
-          "password": "",
-          "clusters": []
-        }
-      ]
     }
   ]
 }

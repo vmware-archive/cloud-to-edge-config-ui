@@ -42,9 +42,26 @@ Run `ng e2e` to execute the end-to-end tests via
 From the root directory
 run the node build `ng build` to create the 'dist' directory.
 run `./docker/runDocker.sh`
-Browse to `http://localhost/`
+Browse to `http://localhost:4200/`
 
 The port can be changed in the `runDocker.sh` file
+
+# Python 3 Server
+
+Install Python3
+
+Install dependencies
+
+`pip3 install flask`
+
+`pip3 install flask_cors`
+
+`pip3 install pyyaml`
+
+`python3 skyway_config_server.py`
+
+Server runs on `http://localhost:4201/`
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

@@ -1,0 +1,124 @@
+environments:
+- base_ova_name: xenial-server-cloudimg-amd64.ova
+  base_ova_name_arm: xenial-server-cloudimg-arm64.ova
+  binary_webserver: http://192.168.120.40
+  contact: Gray Eye
+  defaultgateway: '10.13.12.1 '
+  deployCustom: false
+  deployUniform: true
+  dnsdomain: corp.local.io
+  dnsserver: 10.13.12.2
+  ftNoDown: false
+  ftStandard: true
+  git_key: 0&^%&$675*&%^&*^$^&*58
+  id: '123'
+  location: Area 51
+  name: Deploy West
+  netmask: 255.255.255.0
+  ntpservers: 10.13.12.2
+  ovftool_image: VMware-ovftool-4.3.0-7948156-lin.x86_64.bundle
+  skyway_edge_vm_basename: edgevm
+  skyway_edge_vm_network: VM-RegionA01-vDS-COMP
+  skyway_edge_vm_password: skyway-passZ!
+  skyway_edge_vm_ssh_priv_key: MIIEpAIBAAKCAQE
+  skyway_edge_vm_ssh_pub_key: QrbqK+twcjz3Ity
+  skyway_edge_vm_user: edgevm
+  typeAzure: true
+  typeGG: true
+  vcenters:
+  - clusters:
+    - edges:
+      - edge_group: Edge One
+        id: '9900'
+      - edge_group: Edge Two
+        id: '777'
+      id: 432
+      typeAzure: false
+      typeGG: true
+      vcenter_cluster: Management Cluster
+      vcenter_datacenter: West DC
+      vcenter_datastore: Tier 1
+      vcenter_insecure: true
+      vcenter_rp: Mgmt RP
+    - edges:
+      - edge_group: Edge 1
+        id: '9903620'
+      - edge_group: Edge 2
+        id: '3322'
+      id: 221
+      typeAzure: false
+      typeGG: true
+      vcenter_cluster: Workload Cluster
+      vcenter_datacenter: West DC
+      vcenter_datastore: Tier 2
+      vcenter_insecure: true
+      vcenter_rp: Workload RP
+    - edges:
+      - edge_group: New South Edge
+        id: '-1098697968'
+        typeAzure: true
+        typeGG: true
+      - edge_group: North Edge
+        id: '-1509867464'
+        typeAzure: true
+        typeGG: true
+      id: '930423399'
+      vcenter_cluster: South Cluster
+      vcenter_datacenter: Retail DC
+      vcenter_datastore: NFS Fast
+      vcenter_insecure: true
+      vcenter_rp: Inflate
+    host: vcenter-01.lab.local
+    id: 8797
+    name: vCenter UAT
+    password: VMware1!
+    user: administrator@vsphere.local
+  - clusters: []
+    host: vcenter-01.corp.com
+    id: 24553
+    name: vCenter Prod
+    password: VMware1!
+    user: administrator@vsphere.local
+- aws_access_key: ''
+  aws_secret_key: ''
+  azure_cli_application_id: ''
+  azure_cli_application_key: ''
+  azure_cli_tenant_id: ''
+  azure_iot_group: ''
+  azure_iot_hub_name: ''
+  base_ova_name: ''
+  base_ova_name_arm: ''
+  binary_webserver: ''
+  contact: ''
+  defaultgateway: ''
+  deployCustom: false
+  deployUniform: true
+  dnsdomain: ''
+  dnsserver: ''
+  ftNoDown: false
+  ftStandard: true
+  git_key: ''
+  greengrass_device_count: 1
+  greengrass_device_stub: ''
+  greengrass_s3_bucket: ''
+  id: '3556498'
+  location: ''
+  name: test
+  netmask: ''
+  ntpservers: ''
+  ovftool_image: ''
+  skyway_edge_vm_basename: ''
+  skyway_edge_vm_network: ''
+  skyway_edge_vm_password: ''
+  skyway_edge_vm_ssh_priv_key: ''
+  skyway_edge_vm_ssh_pub_key: ''
+  skyway_edge_vm_user: ''
+  typeAzure: false
+  typeGG: true
+  vcenters:
+  - clusters: []
+    host: {}
+    id: '-1693809010'
+    name: Some new Vcenter
+    password: ''
+    user: ''
