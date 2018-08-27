@@ -1,4 +1,3 @@
-import json
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import yaml
@@ -27,11 +26,9 @@ def loadConfig():
   try:
     configFile = open(configFileName, mode='r', encoding='utf-8')
 
-    #response = json.load(configFile)
-
     response = yaml.load(configFile)
 
-    print ("Response Payload:", response)
+    #print ("Response Payload:", response)
 
     configFile.close()
   except IOError:
@@ -48,7 +45,6 @@ def saveConfig():
   try:
     configFile = open(configFileName, mode='w', encoding='utf-8')
 
-    # json.dump(content, configFile)
     yaml.dump(content, configFile, default_flow_style=False)
 
 
@@ -119,6 +115,8 @@ def convertToExportStructure(json):
     ex['skyway_edge_vm_network'] = json['skyway_edge_vm_network']
     ex['skyway_edge_vm_ssh_priv_key'] = json['skyway_edge_vm_ssh_priv_key']
     ex['skyway_edge_vm_ssh_pub_key'] = json['skyway_edge_vm_ssh_pub_key']
+    ex['typeAzure'] = json['typeAzure']
+    ex['typeGG'] = json['typeGG']
 
     ex['skyway_edges'] = []
 
@@ -140,7 +138,7 @@ def convertToExportStructure(json):
           edgeGroup['vcenter_insecure'] = cluster['vcenter_insecure']
           ex['skyway_edges'].append(edgeGroup)
 
-          if 'typeGG' in cluster and  cluster['typeGG']:
+          if 'typeGG' in ex and  ex['typeGG']:
             if 'greengrass_group_names' not in ex:
               ex['greengrass_group_names'] = []
 
@@ -154,6 +152,15 @@ def convertToExportStructure(json):
             hasGreenGrass = True
 
 
+          if 'typeAzure' in ex and  ex['typeAzure']:
+            if 'azure_iot_edge_names' not in ex:
+              ex['azure_iot_edge_names'] = []
+
+            ex['azure_iot_edge_names'].append(edge['edge_group'])
+
+            hasAzure = True
+
+
     if hasGreenGrass:
       ex['aws_access_key'] = json['aws_access_key']
       ex['aws_secret_key'] = json['aws_secret_key']
@@ -161,6 +168,12 @@ def convertToExportStructure(json):
       ex['greengrass_device_stub'] = json['greengrass_device_stub']
       ex['greengrass_device_count'] = json['greengrass_device_count']
 
+    if(hasAzure):
+      ex['azure_cli_application_id'] = json['azure_cli_application_id']
+      ex['azure_cli_application_key'] = json['azure_cli_application_key']
+      ex['azure_cli_tenant_id'] = json['azure_cli_tenant_id']
+      ex['azure_iot_hub_name'] = json['azure_iot_hub_name']
+      ex['azure_iot_group'] = json['azure_iot_group']
 
     return ex
 

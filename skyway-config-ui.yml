@@ -1,6 +1,11 @@
 environments:
-- aws_access_key: gg access key
-  aws_secret_key: gg secret
+- aws_access_key: AWS Access Key
+  aws_secret_key: AWS Secret Key
+  azure_cli_application_id: azure app id
+  azure_cli_application_key: azure app key
+  azure_cli_tenant_id: azure tenant id
+  azure_iot_group: azure iot resource group
+  azure_iot_hub_name: azure iot hub name
   base_ova_name: xenial-server-cloudimg-amd64.ova
   base_ova_name_arm: xenial-server-cloudimg-arm64.ova
   binary_webserver: http://192.168.120.40
@@ -14,8 +19,8 @@ environments:
   ftStandard: true
   git_key: 0&^%&$675*&%^&*^$^&*58
   greengrass_device_count: gg iot group
-  greengrass_device_stub: gg stub
-  greengrass_s3_bucket: gg s3 bucket
+  greengrass_device_stub: Device Stub
+  greengrass_s3_bucket: S3 Bucket
   id: '123'
   location: Area 51
   name: Deploy West
@@ -26,7 +31,12 @@ environments:
   skyway_edge_vm_network: VM-RegionA01-vDS-COMP
   skyway_edge_vm_password: skyway-passZ!
   skyway_edge_vm_ssh_priv_key: MIIEpAIBAAKCAQE
-  skyway_edge_vm_ssh_pub_key: QrbqK+twcjz3Ity
+  skyway_edge_vm_ssh_pub_key: " ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCX/adFOoYeKAcD81EogrCj5/2FsmJD2i/5geS\n\
+    \  eGvQZkPmpz54ro5xem6hu4kZaqG3Ej5HGdvZkcNRCK8bTcoRtqHS+uNxfBVAXwgf9G9De8A2wi+\n\
+    \  R8iugGbTyIEthHcgC4DruE9oGLry8U3NjWwIy0VUDR7xKkjYRe7HAr/UdXI3FYl59KGtOJdbOzI\n\
+    \  XoNQsY9OTgXgTaKCcFoI0y11MQrbqK+twcjz3ItyhecI8xxwHBcZnAomUFIuS8BeFaiUAj7HtMm\n\
+    \  Fpc3+plSOiODPI8rPhm5pBiq5FiVrLfjEaBx/1frXuMQ3eaQaQiWzfW8PDVVhnK7650tDg9yjx+\n\
+    \  bIFop nobody@this-is-a-placeholder-key.com"
   skyway_edge_vm_user: edgevm
   typeAzure: true
   typeGG: true
@@ -84,46 +94,3 @@ environments:
     name: vCenter Prod
     password: VMware1!
     user: administrator@vsphere.local
-- aws_access_key: ''
-  aws_secret_key: ''
-  azure_cli_application_id: ''
-  azure_cli_application_key: ''
-  azure_cli_tenant_id: ''
-  azure_iot_group: ''
-  azure_iot_hub_name: ''
-  base_ova_name: ''
-  base_ova_name_arm: ''
-  binary_webserver: ''
-  contact: ''
-  defaultgateway: ''
-  deployCustom: false
-  deployUniform: true
-  dnsdomain: ''
-  dnsserver: ''
-  ftNoDown: false
-  ftStandard: true
-  git_key: ''
-  greengrass_device_count: 1
-  greengrass_device_stub: ''
-  greengrass_s3_bucket: ''
-  id: '3556498'
-  location: ''
-  name: test
-  netmask: ''
-  ntpservers: ''
-  ovftool_image: ''
-  skyway_edge_vm_basename: ''
-  skyway_edge_vm_network: ''
-  skyway_edge_vm_password: ''
-  skyway_edge_vm_ssh_priv_key: ''
-  skyway_edge_vm_ssh_pub_key: ''
-  skyway_edge_vm_user: ''
-  typeAzure: false
-  typeGG: true
-  vcenters:
-  - clusters: []
-    host: {}
-    id: '-1693809010'
-    name: Some new Vcenter
-    password: ''
-    user: ''

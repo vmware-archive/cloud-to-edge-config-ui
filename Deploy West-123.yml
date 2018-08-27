@@ -1,5 +1,17 @@
-aws_access_key: gg access key
-aws_secret_key: gg secret
+aws_access_key: AWS Access Key
+aws_secret_key: AWS Secret Key
+azure_cli_application_id: azure app id
+azure_cli_application_key: azure app key
+azure_cli_tenant_id: azure tenant id
+azure_iot_edge_names:
+- Edge One
+- Edge Two
+- Edge 1
+- Edge 2
+- New South Edge
+- North Edge
+azure_iot_group: azure iot resource group
+azure_iot_hub_name: azure iot hub name
 base_ova_name: xenial-server-cloudimg-amd64.ova
 base_ova_name_arm: xenial-server-cloudimg-arm64.ova
 binary_webserver: http://192.168.120.40
@@ -21,14 +33,22 @@ greengrass_deploy:
   Edge Two:
     deploy: true
     redeploy: false
+  New South Edge:
+    deploy: true
+    redeploy: false
+  North Edge:
+    deploy: true
+    redeploy: false
 greengrass_device_count: gg iot group
-greengrass_device_stub: gg stub
+greengrass_device_stub: Device Stub
 greengrass_group_names:
 - Edge One
 - Edge Two
 - Edge 1
 - Edge 2
-greengrass_s3_bucket: gg s3 bucket
+- New South Edge
+- North Edge
+greengrass_s3_bucket: S3 Bucket
 netmask: 255.255.255.0
 ntpservers: 10.13.12.2
 ovftool_image: VMware-ovftool-4.3.0-7948156-lin.x86_64.bundle
@@ -37,7 +57,12 @@ skyway_edge_vm_basename: edgevm
 skyway_edge_vm_network: VM-RegionA01-vDS-COMP
 skyway_edge_vm_password: skyway-passZ!
 skyway_edge_vm_ssh_priv_key: MIIEpAIBAAKCAQE
-skyway_edge_vm_ssh_pub_key: QrbqK+twcjz3Ity
+skyway_edge_vm_ssh_pub_key: " ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCX/adFOoYeKAcD81EogrCj5/2FsmJD2i/5geS\n\
+  \  eGvQZkPmpz54ro5xem6hu4kZaqG3Ej5HGdvZkcNRCK8bTcoRtqHS+uNxfBVAXwgf9G9De8A2wi+\n\
+  \  R8iugGbTyIEthHcgC4DruE9oGLry8U3NjWwIy0VUDR7xKkjYRe7HAr/UdXI3FYl59KGtOJdbOzI\n\
+  \  XoNQsY9OTgXgTaKCcFoI0y11MQrbqK+twcjz3ItyhecI8xxwHBcZnAomUFIuS8BeFaiUAj7HtMm\n\
+  \  Fpc3+plSOiODPI8rPhm5pBiq5FiVrLfjEaBx/1frXuMQ3eaQaQiWzfW8PDVVhnK7650tDg9yjx+\n\
+  \  bIFop nobody@this-is-a-placeholder-key.com"
 skyway_edge_vm_user: edgevm
 skyway_edges:
 - edge_group: Edge One
@@ -95,3 +120,5 @@ skyway_edges:
   vcenter_rp: Inflate
   vcenter_usr: administrator@vsphere.local
 skyway_installer: skyway-concourse
+typeAzure: true
+typeGG: true
