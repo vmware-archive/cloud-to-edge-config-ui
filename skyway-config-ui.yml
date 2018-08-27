@@ -1,5 +1,7 @@
 environments:
-- base_ova_name: xenial-server-cloudimg-amd64.ova
+- aws_access_key: gg access key
+  aws_secret_key: gg secret
+  base_ova_name: xenial-server-cloudimg-amd64.ova
   base_ova_name_arm: xenial-server-cloudimg-arm64.ova
   binary_webserver: http://192.168.120.40
   contact: Gray Eye
@@ -11,6 +13,9 @@ environments:
   ftNoDown: false
   ftStandard: true
   git_key: 0&^%&$675*&%^&*^$^&*58
+  greengrass_device_count: gg iot group
+  greengrass_device_stub: gg stub
+  greengrass_s3_bucket: gg s3 bucket
   id: '123'
   location: Area 51
   name: Deploy West
