@@ -53,6 +53,22 @@
 
           </div>
 
+
+          <div class="form-group">
+            <label for="aForm_1">vCenter</label>
+            <input disabled type="text" id="aForm_1" value="{{ edgeSum.vcenter_name}}">
+          </div>
+
+          <div class="form-group">
+            <label for="aForm_2">Cluster</label>
+            <input disabled type="text" id="aForm_2" value="{{ edgeSum.vcenter_cluster}}">
+          </div>
+
+          <div class="form-group">
+            <label for="aForm_3">Environment</label>
+            <input disabled type="text" id="aForm_3" value="{{ edgeSum.env_name}}">
+          </div>
+
         </section>
 
         <button class="btn btn-primary" type=submit *ngIf="!isDisabled()">Save</button>

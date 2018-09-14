@@ -2,8 +2,47 @@ import {Edge} from "../interfaces/edge";
 import {Environment} from "../interfaces/environment";
 import {Cluster} from "../interfaces/cluster";
 import {vCenter} from "../interfaces/vcenter";
+import {EdgeSummary} from "../interfaces/edge-summary";
 
 export class ConfigFactory {
+
+
+  static createEdgeInfo(environment: Environment, vcenter: vCenter, cluster: Cluster, edge: Edge): EdgeSummary {
+    return {
+
+      id: edge.id,
+
+    edge_group: edge.edge_group,
+
+      // TODO: add logic to check for null and get it from env
+    typeGG: edge.typeGG,
+    typeAzure: edge.typeAzure,
+
+    cluster_id: cluster.id,
+    vcenter_cluster: cluster.vcenter_cluster,
+
+    vcenter_datacenter: cluster.vcenter_datacenter,
+    vcenter_datastore: cluster.vcenter_datastore,
+    vcenter_rp: cluster.vcenter_rp,
+    vcenter_insecure: cluster.vcenter_insecure,
+
+    vcenter_id: vcenter.id,
+    vcenter_name: vcenter.name,
+
+    vcenter_host: vcenter.host,
+
+    ntpservers: environment.ntpservers,
+    dnsserver: environment.dnsserver,
+    dnsdomain: environment.dnsdomain,
+    defaultgateway: environment.defaultgateway,
+    netmask: environment.netmask,
+
+    env_id: environment.id,
+    env_name: environment.name
+
+  };
+  }
+
   static createEdge(environment: Environment): Edge {
     return {
       id: "",

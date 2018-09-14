@@ -46,21 +46,39 @@
 
           <form>
             <section class="form-block">
+
               <div class="form-group">
                 <label for="aForm_1">Location</label>
                 <input disabled type="text" id="aForm_1" value="{{ env.location}}">
               </div>
-              <div class="form-group">
 
-                <label for="aForm_2">Contact</label>
-                <input disabled type="text" id="aForm_2" value="{{ env.contact}}">
+              <div class="form-group">
+                <label for="aForm_2">Owner</label>
+                <input disabled type="text" id="aForm_2" value="{{ env.skyway_edge_vm_user}}">
               </div>
+
+              <div class="form-group">
+                <label for="aForm_3">Base</label>
+                <input disabled type="text" id="aForm_3" value="{{ env.skyway_edge_vm_basename}}">
+              </div>
+
+              <div class="form-group">
+                <label for="aForm_4">Network</label>
+                <input disabled type="text" id="aForm_4" value="{{ env.skyway_edge_vm_network}}">
+              </div>
+
+              <div class="form-group">
+                <label for="aForm_5">Network</label>
+                <input disabled type="text" id="aForm_5" value="{{ env.dnsdomain}}">
+              </div>
+
+
 
 
             </section>
           </form>
           <a class="nav-link" [routerLink]="['/environment/', env.id, 'vcenterlist']">vCenters</a>
-          <a class="nav-link" [routerLink]="['/environment/', env.id, 'edgelist']" style="float: right">edges</a>
+          <a class="nav-link" [routerLink]="['/environment/', env.id, 'edgelist']" style="float: right">Edges</a>
 
 
 

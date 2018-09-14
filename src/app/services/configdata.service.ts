@@ -4,6 +4,8 @@ import {vCenter} from "../interfaces/vcenter";
 import {Cluster} from "../interfaces/cluster";
 import {HttpConfigService} from "./http-config.service";
 import {Injectable} from "@angular/core";
+import {ConfigFactory} from "../classes/config-factory";
+import {EdgeSummary} from "../interfaces/edge-summary";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,6 @@ export class ConfigdataService {
   }
 
   static configData: object = {environments: []};
-
 
 
   static setConfig(config: object) {
@@ -205,6 +206,25 @@ export class ConfigdataService {
     }
     return hash.toString(10);
   };
+
+
+  static getEnvironmentEdges(envId: string): EdgeSummary[] {
+    let returnData = [];
+    let environment = ConfigdataService.getEnvironment(envId);
+    let vcenters = environment.vcenters;
+    for (let vcIndex = 0; vcIndex < vcenters.length; vcIndex++) {
+      let clusters = vcenters[vcIndex].clusters;
+      for (let clusterIndex = 0; clusterIndex < clusters.length; clusterIndex++) {
+        let edges = clusters[clusterIndex].edges;
+        for (let edgeIndex = 0; edgeIndex < edges.length; edgeIndex++) {
+          let edge = edges[edgeIndex];
+          let edgeInfo = ConfigFactory.createEdgeInfo(environment, vcenters[vcIndex], clusters[clusterIndex], edge);
+          returnData.push(edgeInfo);
+        }
+      }
+    }
+    return returnData;
+  }
 
 
 }

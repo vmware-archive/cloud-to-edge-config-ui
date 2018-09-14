@@ -88,7 +88,18 @@ environments:
     name: vCenter UAT
     password: VMware1!
     user: administrator@vsphere.local
-  - clusters: []
+  - clusters:
+    - edges:
+      - edge_group: test edge
+        id: '-1238752117'
+        typeAzure: true
+        typeGG: true
+      id: '-1008849812'
+      vcenter_cluster: Test Cluster
+      vcenter_datacenter: TEst DC
+      vcenter_datastore: TEst DS
+      vcenter_insecure: true
+      vcenter_rp: TEst RP
     host: vcenter-01.corp.com
     id: 24553
     name: vCenter Prod

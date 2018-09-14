@@ -1,3 +1,75 @@
-<p>
-  environment-edge-list works!
-</p>
+
+<div *ngIf="edges">
+
+  <clr-modal [(clrModalOpen)]="showDeleteDialog">
+    <h3 class="modal-title">Confirm Delete</h3>
+    <div class="modal-body">
+      <p>Delete Edge: {{ selectedEdge.edge_group}}  ({{selectedEdge.id}}) ?</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline" (click)="showDeleteDialog = false">Cancel</button>
+      <button type="button" class="btn btn-primary"  data-dismiss="modal" (click)="onDeleteConfirm()">Ok</button>
+    </div>
+  </clr-modal>
+
+
+  <h3>Deployment Edges
+    <a class="nav-link" [routerLink]="['/edge/', 'new']">
+      <clr-icon shape="plus" style="cursor: pointer"></clr-icon>
+    </a>
+  </h3>
+
+
+  <div class="row" >
+
+    <div class="col-lg-5 col-md-6 col-sm-8 col-xs-12" *ngFor="let edge of edges">
+
+      <div class="card" *ngIf="edge">
+        <div class="card-header">
+          <a class="nav-link" [routerLink]="['/environment', edge.env_id, 'vcenter', edge.vcenter_id, 'cluster', edge.cluster_id, 'edge', edge.id]">{{ edge.edge_group }} ( {{edge.id }})</a>
+
+
+          <!--<a class="nav-link" style="float: right; cursor: pointer" (click)="onShowConfirmDelete( edge.id )">-->
+            <!--<clr-icon shape="trash"></clr-icon>-->
+          <!--</a>-->
+
+        </div>
+        <div class="card-block">
+
+          <div class="card-text">
+
+
+            <form>
+              <section class="form-block">
+                <div class="form-group">
+                  <label for="aForm_1">vCenter</label>
+                  <input disabled type="text" id="aForm_1" value="{{ edge.vcenter_name}}">
+                </div>
+
+                <div class="form-group">
+                  <label for="aForm_2">Cluster</label>
+                  <input disabled type="text" id="aForm_2" value="{{ edge.vcenter_cluster}}">
+                </div>
+
+                <div class="form-group">
+                  <label for="aForm_3">Environment</label>
+                  <input disabled type="text" id="aForm_3" value="{{ edge.env_name}}">
+                </div>
+
+
+              </section>
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+
+  </div>
+
+</div>

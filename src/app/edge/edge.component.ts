@@ -7,6 +7,8 @@ import {Environment} from "../interfaces/environment";
 import {Edge} from "../interfaces/edge";
 import {ConfigFactory} from "../classes/config-factory";
 import {HttpConfigService} from "../services/http-config.service";
+import {EdgeSummary} from "../interfaces/edge-summary";
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-edge',
@@ -19,12 +21,14 @@ export class EdgeComponent implements OnInit {
   vcenter: vCenter;
   cluster: Cluster;
   edge: Edge;
+  edgeSum: EdgeSummary;
 
   readonly: boolean;
   adding: boolean;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
+              private location: Location,
               private httpConfig: HttpConfigService) {
   }
 
@@ -38,7 +42,6 @@ export class EdgeComponent implements OnInit {
       this.environment = ConfigdataService.getEnvironment(envId);
       this.vcenter = ConfigdataService.getVCenter(envId, vcId);
       this.cluster = ConfigdataService.getCluster(envId, vcId, clusterId);
-
       if (edgeId === "new") {
         this.adding = true;
         this.readonly = false;
@@ -48,6 +51,7 @@ export class EdgeComponent implements OnInit {
         this.edge = ConfigdataService.getEdge(envId, vcId, clusterId, edgeId);
         this.readonly = true;
       }
+      this.edgeSum = ConfigFactory.createEdgeInfo(this.environment, this.vcenter, this.cluster, this.edge);
 
     });
   }
@@ -72,6 +76,7 @@ export class EdgeComponent implements OnInit {
   }
 
   buttonCancel() {
+    this.location.back();
     this.router.navigateByUrl("/environment/" + this.environment.id + "/vcenter/" + this.vcenter.id + "/cluster/" + this.cluster.id + "/edgelist");
   }
 
