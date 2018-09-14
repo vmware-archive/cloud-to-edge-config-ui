@@ -20,6 +20,7 @@ import {VCenterComponent} from './v-center/v-center.component';
 import {ClusterComponent} from './cluster/cluster.component';
 import {EdgeComponent} from './edge/edge.component';
 import {HttpClientModule} from "@angular/common/http";
+import { EnvironmentEdgeListComponent } from './environment-edge-list/environment-edge-list.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import {HttpClientModule} from "@angular/common/http";
     VCenterListComponent,
     VCenterComponent,
     ClusterComponent,
-    EdgeComponent
+    EdgeComponent,
+    EnvironmentEdgeListComponent
   ],
   imports: [
     BrowserModule,

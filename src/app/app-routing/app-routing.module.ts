@@ -11,6 +11,7 @@ import {VCenterComponent} from "../v-center/v-center.component";
 import {ClusterComponent} from "../cluster/cluster.component";
 import {EdgeListComponent} from "../edge-list/edge-list.component";
 import {EdgeComponent} from "../edge/edge.component";
+import {EnvironmentEdgeListComponent} from "../environment-edge-list/environment-edge-list.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -26,6 +27,9 @@ const routes: Routes = [
   },{
     path: 'environment/:envId/vcenterlist',
     component: VCenterListComponent
+  },{
+    path: 'environment/:envId/edgelist',
+    component: EnvironmentEdgeListComponent
   }, {
     path: 'environment/:envId/vcenter/:vcId',
     component: VCenterComponent
