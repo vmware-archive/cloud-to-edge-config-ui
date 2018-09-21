@@ -2,12 +2,16 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import yaml
 
-portNum = "4201"
 configFileName = "skyway-config-ui.yml"
 
 app = Flask(__name__)
 cors = CORS(app)
 
+from SkywayDB import DB
+
+
+def runServer(portNum):
+  app.run(port=portNum)
 
 
 #######################################
@@ -176,10 +180,3 @@ def convertToExportStructure(json):
       ex['azure_iot_group'] = json['azure_iot_group']
 
     return ex
-
-
-
-  #######################################
-# Run the App
-if __name__ == '__main__':
-  app.run(port=portNum)
