@@ -9,8 +9,17 @@ def setup():
     db.createSchema()
     db.populateTestData()
 
-    data = db.query('''select ROWID, * from Environments''')
-    print("Data: ", data)
+    data = db.query('''select * from Environments''')
+    print("Environments: ", data)
+
+    data = db.query('''select * from VCenters''')
+    print("vCenters: ", data)
+
+    data = db.query('''select * from Clusters''')
+    print("Clusters: ", data)
+
+    data = db.query('''select * from Edges''')
+    print("Edges: ", data)
 
     vc = db.getVCenter(1)
     print("VC: ", vc)
