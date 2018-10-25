@@ -1,7 +1,10 @@
 # cloud-to-edge-config-ui
+<<<<<<< HEAD
 
 This is a web-based UI for collecting the configuration and setup information
 for the cloud-to-edge project.
+=======
+>>>>>>> Add README template
 
 ## Getting Started
 
