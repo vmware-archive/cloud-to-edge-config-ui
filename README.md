@@ -54,6 +54,8 @@ The port can be changed in the `runDocker.sh` file
 
 # Python 3 Server
 
+The web UI relies on a simple Python backend for data persistence.
+
 Install Python3
 
 Install dependencies

@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-docker kill skyway-config-ui
-docker rm skyway-config-ui
+docker kill c2e-config-ui
+docker rm c2e-config-ui
