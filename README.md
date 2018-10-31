@@ -1,10 +1,7 @@
 # cloud-to-edge-config-ui
-<<<<<<< HEAD
 
 This is a web-based UI for collecting the configuration and setup information
 for the cloud-to-edge project.
-=======
->>>>>>> Add README template
 
 ## Getting Started
 
@@ -14,7 +11,13 @@ You will need to install Angular if you haven't previously.
 
 For example, on a Mac:
 * Install Homebrew (brew.sh)
-*
+* Install Node.JS for NPM: ```brew install node```
+* Install the Angular CLI: ```npm install -g @angular/cli```
+* Install other app dependencies: ```npm install```
+
+The steps on other platforms are similar, but with perhaps a different package
+manager or a different package name for NPM/Node.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app
