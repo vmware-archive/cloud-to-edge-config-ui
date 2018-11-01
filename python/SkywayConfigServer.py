@@ -91,16 +91,16 @@ def convertToExportStructure(json):
     else:
       ex['enable_ansible_debug'] = "false"
 
-    if 'skyway_installer' in json:
-      ex['skyway_installer'] = json['skyway_installer']
+    if 'c2e_installer' in json:
+      ex['c2e_installer'] = json['c2e_installer']
     else:
-      ex['skyway_installer'] = "skyway-concourse"
+      ex['c2e_installer'] = "skyway-concourse"
 
 
-    if 'skyway_edge_deploy_size' in json:
-      ex['skyway_edge_deploy_size'] = json['skyway_edge_deploy_size']
+    if 'c2e_edge_deploy_size' in json:
+      ex['c2e_edge_deploy_size'] = json['c2e_edge_deploy_size']
     else:
-      ex['skyway_edge_deploy_size'] = "small"
+      ex['c2e_edge_deploy_size'] = "small"
 
 
     ex['git_key'] = json['git_key']
@@ -113,16 +113,16 @@ def convertToExportStructure(json):
     ex['base_ova_name'] = json['base_ova_name']
     ex['base_ova_name_arm'] = json['base_ova_name_arm']
     ex['ovftool_image'] = json['ovftool_image']
-    ex['skyway_edge_vm_basename'] = json['skyway_edge_vm_basename']
-    ex['skyway_edge_vm_user'] = json['skyway_edge_vm_user']
-    ex['skyway_edge_vm_password'] = json['skyway_edge_vm_password']
-    ex['skyway_edge_vm_network'] = json['skyway_edge_vm_network']
-    ex['skyway_edge_vm_ssh_priv_key'] = json['skyway_edge_vm_ssh_priv_key']
-    ex['skyway_edge_vm_ssh_pub_key'] = json['skyway_edge_vm_ssh_pub_key']
+    ex['c2e_edge_vm_basename'] = json['c2e_edge_vm_basename']
+    ex['c2e_edge_vm_user'] = json['c2e_edge_vm_user']
+    ex['c2e_edge_vm_password'] = json['c2e_edge_vm_password']
+    ex['c2e_edge_vm_network'] = json['c2e_edge_vm_network']
+    ex['c2e_edge_vm_ssh_priv_key'] = json['c2e_edge_vm_ssh_priv_key']
+    ex['c2e_edge_vm_ssh_pub_key'] = json['c2e_edge_vm_ssh_pub_key']
     ex['typeAzure'] = json['typeAzure']
     ex['typeGG'] = json['typeGG']
 
-    ex['skyway_edges'] = []
+    ex['c2e_edges'] = []
 
     hasGreenGrass = False
     hasAzure = False
@@ -140,7 +140,7 @@ def convertToExportStructure(json):
           edgeGroup['vcenter_cluster'] = cluster['vcenter_cluster']
           edgeGroup['vcenter_rp'] = cluster['vcenter_rp']
           edgeGroup['vcenter_insecure'] = cluster['vcenter_insecure']
-          ex['skyway_edges'].append(edgeGroup)
+          ex['c2e_edges'].append(edgeGroup)
 
           if 'typeGG' in ex and  ex['typeGG']:
             if 'greengrass_group_names' not in ex:

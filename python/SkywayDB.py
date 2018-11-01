@@ -3,7 +3,7 @@ import sqlite3
 import SkywaySchema
 
 class DB(object):
-    sqlfile = "./skyway_config_ui.db"
+    sqlfile = "./c2e_config_ui.db"
 
     def __init__(self):
         self.connection = sqlite3.connect(self.sqlfile)

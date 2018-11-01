@@ -66,7 +66,7 @@ Install dependencies
 
 `pip3 install pyyaml`
 
-`python3 skyway_config_server.py`
+`python3 c2e_config_server.py`
 
 Server runs on `http://localhost:4201/`
 

@@ -37,20 +37,20 @@ export interface Environment {
   ovftool_image: string;
 
   // Stub for edge VM names: will become [edge_vm_basename]-[edge_group]
-  skyway_edge_vm_basename: string;
+  c2e_edge_vm_basename: string;
 
   // Default credentials to add to Edge VMs
-  skyway_edge_vm_user: string;
-  skyway_edge_vm_password: string;
+  c2e_edge_vm_user: string;
+  c2e_edge_vm_password: string;
 
   // This will serve as a default if no specific network is provided in
   // skway_edges
-  skyway_edge_vm_network: string;
+  c2e_edge_vm_network: string;
 
   // Private key for connecting to Edge VMs.  If set, should correspond to the
   // pub key below
-  skyway_edge_vm_ssh_priv_key: string;
-  skyway_edge_vm_ssh_pub_key: string;
+  c2e_edge_vm_ssh_priv_key: string;
+  c2e_edge_vm_ssh_pub_key: string;
 
   // Azure auth settings
   azure_cli_application_id: string;

@@ -102,12 +102,12 @@
       "base_ova_name": "xenial-server-cloudimg-amd64.ova",
       "base_ova_name_arm": "xenial-server-cloudimg-arm64.ova",
       "ovftool_image": "VMware-ovftool-4.3.0-7948156-lin.x86_64.bundle",
-      "skyway_edge_vm_basename": "edgevm",
-      "skyway_edge_vm_user": "edgevm",
-      "skyway_edge_vm_password": "skyway-passZ!",
-      "skyway_edge_vm_network": "VM-RegionA01-vDS-COMP",
-      "skyway_edge_vm_ssh_priv_key": "MIIEpAIBAAKCAQE",
-      "skyway_edge_vm_ssh_pub_key": "QrbqK+twcjz3Ity"
+      "c2e_edge_vm_basename": "edgevm",
+      "c2e_edge_vm_user": "edgevm",
+      "c2e_edge_vm_password": "skyway-passZ!",
+      "c2e_edge_vm_network": "VM-RegionA01-vDS-COMP",
+      "c2e_edge_vm_ssh_priv_key": "MIIEpAIBAAKCAQE",
+      "c2e_edge_vm_ssh_pub_key": "QrbqK+twcjz3Ity"
     }
   ]
 }
