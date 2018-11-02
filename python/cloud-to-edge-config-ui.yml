@@ -9,6 +9,17 @@ environments:
   base_ova_name: xenial-server-cloudimg-amd64.ova
   base_ova_name_arm: xenial-server-cloudimg-arm64.ova
   binary_webserver: http://192.168.120.40
+  c2e_edge_vm_basename: edgevm
+  c2e_edge_vm_network: VM-RegionA01-vDS-COMP
+  c2e_edge_vm_password: c2e-passZ!
+  c2e_edge_vm_ssh_priv_key: MIIEpAIBAAKCAQE
+  c2e_edge_vm_ssh_pub_key: " ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCX/adFOoYeKAcD81EogrCj5/2FsmJD2i/5geS\n\
+    \  eGvQZkPmpz54ro5xem6hu4kZaqG3Ej5HGdvZkcNRCK8bTcoRtqHS+uNxfBVAXwgf9G9De8A2wi+\n\
+    \  R8iugGbTyIEthHcgC4DruE9oGLry8U3NjWwIy0VUDR7xKkjYRe7HAr/UdXI3FYl59KGtOJdbOzI\n\
+    \  XoNQsY9OTgXgTaKCcFoI0y11MQrbqK+twcjz3ItyhecI8xxwHBcZnAomUFIuS8BeFaiUAj7HtMm\n\
+    \  Fpc3+plSOiODPI8rPhm5pBiq5FiVrLfjEaBx/1frXuMQ3eaQaQiWzfW8PDVVhnK7650tDg9yjx+\n\
+    \  bIFop nobody@this-is-a-placeholder-key.com"
+  c2e_edge_vm_user: edgevm
   contact: Gray Eye
   defaultgateway: '10.13.12.1 '
   deployCustom: false
@@ -27,17 +38,6 @@ environments:
   netmask: 255.255.255.0
   ntpservers: 10.13.12.2
   ovftool_image: VMware-ovftool-4.3.0-7948156-lin.x86_64.bundle
-  c2e_edge_vm_basename: edgevm
-  c2e_edge_vm_network: VM-RegionA01-vDS-COMP
-  c2e_edge_vm_password: c2e-passZ!
-  c2e_edge_vm_ssh_priv_key: MIIEpAIBAAKCAQE
-  c2e_edge_vm_ssh_pub_key: " ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCX/adFOoYeKAcD81EogrCj5/2FsmJD2i/5geS\n\
-    \  eGvQZkPmpz54ro5xem6hu4kZaqG3Ej5HGdvZkcNRCK8bTcoRtqHS+uNxfBVAXwgf9G9De8A2wi+\n\
-    \  R8iugGbTyIEthHcgC4DruE9oGLry8U3NjWwIy0VUDR7xKkjYRe7HAr/UdXI3FYl59KGtOJdbOzI\n\
-    \  XoNQsY9OTgXgTaKCcFoI0y11MQrbqK+twcjz3ItyhecI8xxwHBcZnAomUFIuS8BeFaiUAj7HtMm\n\
-    \  Fpc3+plSOiODPI8rPhm5pBiq5FiVrLfjEaBx/1frXuMQ3eaQaQiWzfW8PDVVhnK7650tDg9yjx+\n\
-    \  bIFop nobody@this-is-a-placeholder-key.com"
-  c2e_edge_vm_user: edgevm
   typeAzure: true
   typeGG: true
   vcenters:

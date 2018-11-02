@@ -8,7 +8,7 @@ import { ConfigdataService } from '../services/configdata.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public title = 'C2E';
+  public title = 'Cloud-to-Edge Configuration';
   public configData : object;
 
 
