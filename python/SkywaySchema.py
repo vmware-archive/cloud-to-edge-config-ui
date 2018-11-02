@@ -125,7 +125,7 @@ def populateTestData(cursor):
               'base_ova_name',
               'base_ova_name_arm',
               'ovftool_image',
-              'skywaybase',
+              'c2ebase',
               'administrator',
               'VMware1!',
               'default_network',

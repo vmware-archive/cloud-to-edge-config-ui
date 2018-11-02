@@ -2,7 +2,7 @@
 # set value to true for verbose output from ansible
 enable_ansible_debug: false
 # Set to name of installer or env or any value so resources can be identified
-c2e_installer: skyway-concourse
+c2e_installer: cloud-to-edge-concourse
 # This is a key with access to download private repos
 git_key: |
   -----BEGIN RSA PRIVATE KEY-----
@@ -52,7 +52,7 @@ ovftool_image: VMware-ovftool-4.3.0-7948156-lin.x86_64.bundle
 c2e_edge_vm_basename: edgevm
 # Default credentials to add to Edge VMs
 c2e_edge_vm_user: edgevm
-c2e_edge_vm_password: skyway-passZ!
+c2e_edge_vm_password: c2e-passZ!
 # This will serve as a default if no specific network is provided in
 # skway_edges
 c2e_edge_vm_network: VM-RegionA01-vDS-COMP

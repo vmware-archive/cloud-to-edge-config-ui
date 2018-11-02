@@ -104,7 +104,7 @@
       "ovftool_image": "VMware-ovftool-4.3.0-7948156-lin.x86_64.bundle",
       "c2e_edge_vm_basename": "edgevm",
       "c2e_edge_vm_user": "edgevm",
-      "c2e_edge_vm_password": "skyway-passZ!",
+      "c2e_edge_vm_password": "c2e-passZ!",
       "c2e_edge_vm_network": "VM-RegionA01-vDS-COMP",
       "c2e_edge_vm_ssh_priv_key": "MIIEpAIBAAKCAQE",
       "c2e_edge_vm_ssh_pub_key": "QrbqK+twcjz3Ity"

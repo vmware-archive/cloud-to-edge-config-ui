@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import yaml
 
-configFileName = "skyway-config-ui.yml"
+configFileName = "cloud-to-edge-config-ui.yml"
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -94,7 +94,7 @@ def convertToExportStructure(json):
     if 'c2e_installer' in json:
       ex['c2e_installer'] = json['c2e_installer']
     else:
-      ex['c2e_installer'] = "skyway-concourse"
+      ex['c2e_installer'] = "cloud-to-edge-concourse"
 
 
     if 'c2e_edge_deploy_size' in json:
