@@ -142,7 +142,7 @@ c2e_edges:
     vcenter_cluster: Cluster
     vcenter_rp: Cluster/Resources
     vcenter_insecure: 1
-# Default Sizing of Skyway Edge VMs
+# Default Sizing of C2E Edge VMs
 # small  : 2 vCPU,  4GB RAM
 # medium : 4 vCPU,  8GB RAM
 # large  : 8 vCPU, 16GB RAM

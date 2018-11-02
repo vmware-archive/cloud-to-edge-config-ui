@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Skyway": {
+    "C2E": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Skyway",
+            "outputPath": "dist/C2E",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -55,18 +55,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Skyway:build"
+            "browserTarget": "C2E:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Skyway:build:production"
+              "browserTarget": "C2E:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Skyway:build"
+            "browserTarget": "C2E:build"
           }
         },
         "test": {
@@ -100,7 +100,7 @@
         }
       }
     },
-    "Skyway-e2e": {
+    "C2E-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -108,11 +108,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Skyway:serve"
+            "devServerTarget": "C2E:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Skyway:serve:production"
+              "devServerTarget": "C2E:serve:production"
             }
           }
         },
@@ -247,5 +247,5 @@
       }
     }
   },
-  "defaultProject": "Skyway"
+  "defaultProject": "C2E"
 }

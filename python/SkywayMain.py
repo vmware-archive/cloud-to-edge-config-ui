@@ -1,5 +1,5 @@
-from SkywayDB import DB
-import SkywayConfigServer
+from C2EDB import DB
+import C2EConfigServer
 
 db = DB()
 
@@ -27,4 +27,4 @@ def setup():
 
 if __name__ == '__main__':
   setup()
-  SkywayConfigServer.runServer('4201')
+  C2EConfigServer.runServer('4201')

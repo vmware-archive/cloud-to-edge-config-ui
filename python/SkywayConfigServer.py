@@ -7,7 +7,7 @@ configFileName = "cloud-to-edge-config-ui.yml"
 app = Flask(__name__)
 cors = CORS(app)
 
-from SkywayDB import DB
+from C2EDB import DB
 
 
 def runServer(portNum):

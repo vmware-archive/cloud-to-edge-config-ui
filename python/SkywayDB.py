@@ -1,6 +1,6 @@
 import sqlite3
 
-import SkywaySchema
+import C2ESchema
 
 class DB(object):
     sqlfile = "./c2e_config_ui.db"
@@ -27,14 +27,14 @@ class DB(object):
         self.cursor.execute(statement.strip())
 
     def createSchema(self):
-        SkywaySchema.createTableEnvironments(self.cursor)
-        SkywaySchema.createTableVCenters(self.cursor)
-        SkywaySchema.createTableClusters(self.cursor)
-        SkywaySchema.createTableEdges(self.cursor)
+        C2ESchema.createTableEnvironments(self.cursor)
+        C2ESchema.createTableVCenters(self.cursor)
+        C2ESchema.createTableClusters(self.cursor)
+        C2ESchema.createTableEdges(self.cursor)
         self.commit()
 
     def populateTestData(self):
-        SkywaySchema.populateTestData(self.cursor)
+        C2ESchema.populateTestData(self.cursor)
         self.commit()
 
 
