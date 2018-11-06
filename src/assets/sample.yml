@@ -6,31 +6,7 @@ c2e_installer: cloud-to-edge-concourse
 # This is a key with access to download private repos
 git_key: |
   -----BEGIN RSA PRIVATE KEY-----
-  MIIEpAIBAAKCAQEA0p9crSf1c5JBjpe5eoXJFjllFOJdT0X1/TrLM3xA+v+/QT/s
-  JdYf+dsE/wv1pJ6LI2MWJS21SPxZbeXV4wtRLpQ0KQungSVNqRmgOpU01EOH21zR
-  Jy491QavESX+qrj2vJLBoOeMlQPxAHG4sAkpNFCRCmtS1VvxOy2AuughwdLJOw2/
-  CVuU2KmOQ0kYi3qRRha85575yw9VqLJm+RR/LEKxZzKiRU6qWVFHQ4zlYwI7My4U
-  rfrKXFHLVbinzbnYj6SZINnplRH2qurqY5tngVebG4hL9htflPw1eF4uy+b2ItEx
-  9qIiFoXQXu2B8QE/lI9Zd+iHyGiqoExMso2ARQIDAQABAoIBACd+jIFHqeX2+eYE
-  G1qXNaK+Nm8ZF0gjJUJLwQixdvnZ9QIGO4DIywwt/pzYoEIzHIIRNXjZPlImR5qs
-  61N8rsdeMP21Wr6DwTFBReNWUSawVwxSNkHzkNKeQzui9UMMFfA8UKScZqcWqx1b
-  NbeEsD5IETpz739kkzJ2kNn7Z0ERr2Tr9KbK2/tGfwYGU3HkUjc8FUKOd20FmAIX
-  pW20XIb5nEvSMlCaBKlO+IE7s4TdV3QFNaZYoHd8c09/5AUj3ihTizLP88Xquoft
-  TYJqngTIHqaFujoo/bfWWMo9MyTfZSSktzNvrOjm2RBdzx9EUkAVJPs7x8dBL+gA
-  AHAxQOECgYEA6xrQPFaJVFDhzDCQnEIaalX0V41RiEpprf7hd1+UrS8/kshkMGsF
-  756Q7B82zfN/zPgqEYYiTj3/8eT/yzJUCIMlzrrWDdSDAzQXondjWgTwqmE8iUYg
-  aAL3jZakSIn8bNUpABqnOGURqqNXh251TUrDoSKofJ/vlwvj+dLEW4kCgYEA5VeF
-  KNC0PQcijpZZNm8AnbAHeJvS3tEZNRiLI5vg5BAspvmp7I4jNMZ3aFL5WrBsfP4c
-  ab1pOhnCYtjK9CATpYGt8UijqqJHkpADpJZz1JYgVTocalfA+W2PvE4tByYtkn1C
-  n3ji+Fi8nxKU1+2HWkrO7UIhtmS4AWkfDLrg490CgYAIAN6r3ypHo4U8RT73As0R
-  Z6GsxVPMNvRIBxA31xohlyUr4wR+HXaTRKucTie4dRyZpq0P8agDT9sBqhEHIsx3
-  ibdkxTl6OQzItCJF1picPOTQeATui2OZBtjUihdHnOLp9YuyxDWDFvW2AF9/bcQy
-  gGQOfTaNH4ixdKcrHwCuOQKBgQCoKGz9iVGusa2X6QuOywMjm+9OcsrCD4UxFkbn
-  HCNgda+X2tXKGkocJy1kc/pbkaJqX5QLwBMIw9xwx87AA0kEgLo+gWln8scR4sCZ
-  DKvvgwhAFXTCUIexG7FZe+SuKkMd9vRDo8qgF8htxp0WWhZ1kQZ6lpPLfbwhZKec
-  mOXOjQKBgQDBw3rzR3VI+KJ/s2ecp87ubQfqrJ561Ivi/AR1hrbF53gwYOfEGaAY
-  o1wSywClqrvRFgpyQ+oBjbBehzLfL8cHEfZe7y0Uf1JnrZu0GyBLWgdPaSNMO0FL
-  DXjXUYmXDNh43f4gwhqq8DGGZ/JSgzu1yrTWQ2FmlhTUgiAhBiQb+Q==
+  YOUR_PRIVATE_KEY_HERE
   -----END RSA PRIVATE KEY-----
 # OVA general network settings
 ntpservers: 10.13.12.2                    # EDIT
@@ -150,9 +126,9 @@ c2e_edges:
 c2e_edge_deploy_size: small
 # ===== Azure IoT Settings =====
 # Azure auth settings
-azure_cli_application_id: 72fc7e39-d00f-4a8e-90a6-128888504802
-azure_cli_application_key: 37CEjU3SaBHiwaTYNFWr/A+PXlIcbr7OUAHjMI32XkM=
-azure_cli_tenant_id: b39138ca-3cee-4b4a-a4d6-cd83d9dd62f0
+azure_cli_application_id: AZURE-APP-ID
+azure_cli_application_key: AZURE-APP-KEY
+azure_cli_tenant_id: AZURE-TENANT-ID
 # Name of the IoT hub
 azure_iot_hub_name: ci-iot-hub
 # Group to contain the IoT resources (will be created).
@@ -164,8 +140,8 @@ azure_iot_edge_names:
   - mygroup-5
 # ===== AWS Greengrass Settings =====
 # AWS auth settings
-aws_access_key: AKIAJHDXYBZFWHMV37EA
-aws_secret_key: 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
+aws_access_key: AWSACCESSKEY
+aws_secret_key: AWSSECRETKEY
 # AWS Greengrass settings
 # This S3 bucket is used to store credentials, lambda code, etc.
 greengrass_s3_bucket: greengrass-items
