@@ -6,10 +6,11 @@ for the cloud-to-edge project.
 ## Getting Started
 
 This project was generated with
-[Angular CLI](https://github.com/angular/angular-cli) version 6.1.1.  
+[Angular CLI](https://github.com/angular/angular-cli) version 6.2.9.  
 You will need to install Angular if you haven't previously.
 
 For example, on a Mac:
+
 * Install Homebrew (brew.sh)
 * Install Node.JS for NPM: ```brew install node```
 * Install the Angular CLI: ```npm install -g @angular/cli```
@@ -52,7 +53,7 @@ Browse to `http://localhost:4200/`
 
 The port can be changed in the `runDocker.sh` file
 
-# Python 3 Server
+## Python 3 Server
 
 The web UI relies on a simple Python backend for data persistence.
 
