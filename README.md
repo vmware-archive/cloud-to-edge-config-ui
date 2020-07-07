@@ -3,6 +3,10 @@
 This is a web-based UI for collecting the configuration and setup information
 for the cloud-to-edge project.
 
+*NOTE* This is a proof-of-concept UI and is not at all complete.  It is also 
+no longer actively maintained, since the underlying UI packages are changing
+rapidly.
+
 ## Getting Started
 
 This project was generated with
